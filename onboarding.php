@@ -19,6 +19,8 @@ class OnBoarding extends Module
 
 	public function install()
 	{
+		Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', 1);
+
 		if (parent::install() && $this->registerHook('displayBackOfficeHeader')
 			&& $this->registerHook('displayBackOfficeTop'))
 			return true;
@@ -42,6 +44,7 @@ class OnBoarding extends Module
 	public function hookDisplayBackOfficeTop()
 	{
 		$this->context->smarty->assign(array(
+			'current_step' => Configuration::get('PS_ONBOARDING_CURRENT_STEP'),
 			'employee' => $this->context->employee,
 		));
 
