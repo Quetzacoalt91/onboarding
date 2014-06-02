@@ -1,5 +1,5 @@
 <div class="onboarding">
-	<!--<div class="overlay">-->
+	<div class="overlay">
 		<div class="panel steps{if $steps[1] == 1} minimized{/if}">
 			<div class="col-xs-12">
 				<h3 class="text-center">
@@ -101,5 +101,5 @@
 		<div class="col-xs-12 quick-start-button{if $steps[1] == 1} minimized{/if}">
 			<span><a href="#" id="quick-start-button">{l s='Quick start guide' mod='onboarding'}</a></span>
 		</div>
-	<!--</div>-->
+	</div>
 </div>
