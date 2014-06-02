@@ -6,6 +6,7 @@ $( document ).ready(function() {
 
 	$('.steps a').click(function() {
 		$('.steps').animate({top: '-400px'}, 300);
+		$('.quick-start-button').animate({top: '0px'}, 300);
 	});
 
 	$('#quick-start-button').click(function() {
