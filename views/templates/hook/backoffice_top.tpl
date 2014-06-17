@@ -2,13 +2,13 @@
 	{if $current_step == 1}
 	{l s='Hey %s, welcome on your own online shop' sprintf=[$employee->firstname] mod='onboarding'}
 	{else if $current_step == 2}
-	{l s='Next: let\'s add product to your shop' mod='onboarding'}
+	{l s='Next: let\'s add products to your shop' mod='onboarding'}
 	{else if $current_step == 3}
 	{l s='Next: let\'s set up payment methods' mod='onboarding'}
 	{else if $current_step == 4}
 	{l s='Next: let\'s set up shipping methods' mod='onboarding'}
 	{else if $current_step == 5}
-	{l s='Next: let\'s launch' mod='onboarding'}
+	{l s='Next: let\'s launch!' mod='onboarding'}
 	{/if}
 {/capture}
 {capture name="onboardingComplete"}
@@ -73,7 +73,7 @@
 					<span class="title">{l s='Customize your shop\'s look and feel' mod='onboarding'}</span>
 					{if $steps[1] == 0 && $current_step == 1}
 						<p class="desc">
-							{l s='Give your shop it\'s own identity based on your brand. You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique.' mod='onboarding'}
+							{l s='Give your shop its own identity based on your brand. You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique.' mod='onboarding'}
 							<br><br>
 							<a class="btn btn-primary" href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}">
 							<i class="icon icon-pencil icon-lg"></i> 
@@ -154,10 +154,10 @@
 			{if $current_step == 6}
 				<p>{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.'  mod='onboarding'}</p>
 
-				<p>{l s='To dive deeper in the configuration of your shop, you should read <a>\'First steps with PrestaShop 1.6\'</a> chapter of the PrestaShop User Guide.' mod='onboarding'}</p>
+				<p>{l s='To dive deeper in the configuration of your shop, you should read the <a>\'First steps with PrestaShop 1.6\'</a> chapter of the PrestaShop User Guide.' mod='onboarding'}</p>
 				href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6
 
-				<p>{l s='Once you are certain that your shop is ready to sell your products, click on the launch button to make your shop public.' mod='onboarding'}</p>
+				<p>{l s='Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public.' mod='onboarding'}</p>
 			{/if}
 
 		</div>
@@ -181,7 +181,7 @@
 				{if $current_step == 4}
 					{l s='Last step before launch!' mod='onboarding'}
 				{else if $current_step == 5}
-					{l s='You are all set' mod='onboarding'}
+					{l s='You are all set!' mod='onboarding'}
 				{else}
 					{l s='You are only %s steps away from launch!' sprintf=[5-(int)$current_step] mod='onboarding'}
 				{/if}
