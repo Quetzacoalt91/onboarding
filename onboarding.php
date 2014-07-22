@@ -7,7 +7,7 @@ class OnBoarding extends Module
 	public function __construct()
 	{
 		$this->name = 'onboarding';
-        $this->bootstrap = true;
+        	$this->bootstrap = true;
 		$this->tab = 'administration';
 		$this->version = '0.1';
 		$this->author = 'PrestaShop';
