@@ -88,6 +88,7 @@ class OnBoarding extends Module
 			'continue_editing_links' => array(
 				'theme' => $this->context->link->getAdminLink('AdminThemes'),
 				'product' => $this->context->link->getAdminLink('AdminProducts'),
+				'import' => $this->context->link->getAdminLink('AdminImport'),
 				'payment' => $this->context->link->getAdminLink('AdminPayment'),
 				'carrier' => $this->context->link->getAdminLink('AdminCarriers'),
 				)
@@ -100,9 +101,9 @@ class OnBoarding extends Module
 	{
 		$links = array(
 			1 => $this->context->link->getAdminLink('AdminThemes').'&onboarding',
-			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding',
+			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding&addproduct',
 			3 => $this->context->link->getAdminLink('AdminPayment').'&onboarding',
-			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding',
+			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
 			);
 		return isset($links[$id_step]) ? $links[$id_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding';
 	}

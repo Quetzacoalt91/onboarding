@@ -89,9 +89,9 @@
 					<span class="title">{l s='Add products to your catalog'}</span>
 					{if $steps[2] == 0 && $current_step == 2}
 						<p class="desc">
-							{assign "onboardingstep2importcsv" value="" }
 							{l s="Your catalog is where you manage your products and their details. You can add a product using PrestaShop's intuitive interface." mod="onboarding"}
 							<br>
+							{assign "onboardingstep2importcsv" value=$continue_editing_links.import var="onboardingstep2importcsv"}
 							{l s='You can also [1]import products using a .CSV file[/1].' tags=["<a href='$onboardingstep2importcsv&amp;addproduct'>"] mod='onboarding' }
 							<br><br>
 							<a class="btn btn-primary continue_editing" href="#">
