@@ -13,16 +13,20 @@ $( document ).ready(function() {
 
 	$('#onboarding-starter').removeClass('hide');
 
-	$('.quick-start-button, .close-button').click(function() {
-		$('.onboarding').toggleClass('minimized');
-		//$('.quick-start-button').toggle();
-		if ($('.steps').css('top') === '-560px')
-		{
-			$('.steps').animate({top: '-3px'}, 300);
-		}
-		else
-		{
-			$('.steps').animate({top: '-560px'}, 300);
-		}
+	$('.close-button, .continue_editing').click(function() {
+		toggleOnboardingModal();
 	});
+
+	if (display_onboarding_modal)
+		toggleOnboardingModal();
+		
 });
+
+function toggleOnboardingModal() 
+{
+	if ($('.steps').css('top') === '-560px')
+		$('.steps').animate({top: '-3px'}, 300);
+	else
+		$('.steps').animate({top: '-560px'}, 300);
+	$('.onboarding').toggleClass('minimized');
+}

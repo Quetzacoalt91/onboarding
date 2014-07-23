@@ -43,27 +43,26 @@ class OnBoarding extends Module
 	public function hookDisplayBackOfficeHeader()
 	{
 		$controller = Tools::getValue('controller');
-
-		switch ($controller)
+				
+		if (Tools::isSubmit('onboarding'))
 		{
-			case 'AdminThemes':
-				Configuration::updateValue('PS_ONBOARDING_STEP_1_COMPLETED', 1);
-				break;
-
-			case 'AdminProducts':
-				if (Tools::getIsset('addproduct'))
+			switch ($controller)
+			{
+				case 'AdminProducts':
+					Configuration::updateValue('PS_ONBOARDING_STEP_1_COMPLETED', 1);
+					break;
+				case 'AdminPayment':
 					Configuration::updateValue('PS_ONBOARDING_STEP_2_COMPLETED', 1);
-				break;
-
-			case 'AdminPayment':
-				Configuration::updateValue('PS_ONBOARDING_STEP_3_COMPLETED', 1);
-				break;
-
-			case 'AdminCarriers':
-				Configuration::updateValue('PS_ONBOARDING_STEP_4_COMPLETED', 1);
-				break;
+					break;
+				case 'AdminCarriers':
+					Configuration::updateValue('PS_ONBOARDING_STEP_3_COMPLETED', 1);
+					break;
+				case 'AdminDashboard':
+					Configuration::updateValue('PS_ONBOARDING_STEP_4_COMPLETED', 1);
+					break;
+			}
 		}
-
+		
 		$this->context->controller->addCSS($this->_path.'css/onboarding.css');
 		$this->context->controller->addJS($this->_path.'js/onboarding.js');
 	}
@@ -71,7 +70,6 @@ class OnBoarding extends Module
 	public function hookDisplayBackOfficeTop()
 	{
 		$steps = array();
-
 		for ($i=1; $i<5; $i++)
 		{
 			$steps[$i] = Configuration::get('PS_ONBOARDING_STEP_'.$i.'_COMPLETED');
@@ -79,14 +77,33 @@ class OnBoarding extends Module
 			if ($steps[$i] == 1)
 				Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $i+1);
 		}
-
+		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
 		$this->context->smarty->assign(array(
-			'link' => $this->context->link,
+			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
+			'next_step_link' => $this->getCurrentStepLink(Tools::isSubmit('onboarding') ? $current_step+1 : $current_step),
 			'steps' => $steps,
-			'current_step' => Configuration::get('PS_ONBOARDING_CURRENT_STEP'),
+			'current_step_banner' => Tools::isSubmit('onboarding') ? $current_step+1 : $current_step,
+			'current_step' => $current_step,
 			'employee' => $this->context->employee,
+			'continue_editing_links' => array(
+				'theme' => $this->context->link->getAdminLink('AdminThemes'),
+				'product' => $this->context->link->getAdminLink('AdminProducts'),
+				'payment' => $this->context->link->getAdminLink('AdminPayment'),
+				'carrier' => $this->context->link->getAdminLink('AdminCarriers'),
+				)
 		));
 
 		return $this->display(__FILE__, 'backoffice_top.tpl');
+	}
+	
+	public function getCurrentStepLink($id_step)
+	{
+		$links = array(
+			1 => $this->context->link->getAdminLink('AdminThemes').'&onboarding',
+			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding',
+			3 => $this->context->link->getAdminLink('AdminPayment').'&onboarding',
+			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding',
+			);
+		return isset($links[$id_step]) ? $links[$id_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding';
 	}
 }
