@@ -42,6 +42,8 @@ class OnBoarding extends Module
 
 	public function hookDisplayBackOfficeHeader()
 	{
+		if (!$this->active)
+			return;
 		$controller = Tools::getValue('controller');
 				
 		if (Tools::isSubmit('onboarding'))
