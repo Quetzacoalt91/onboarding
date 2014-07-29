@@ -29,8 +29,9 @@ class AdminOnboardingController extends ModuleAdminController
 	public function ajaxProcessValidateStep()
 	{
 		$current_step = (int)Tools::getValue('current_step');
-		if ($current_step)
+		if ($current_step && $current_step < 5)
 			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step + 1);
+
 		die();
 	}
 }

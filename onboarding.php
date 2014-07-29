@@ -100,9 +100,12 @@ class OnBoarding extends Module
 		{
 			$steps[$i] = Configuration::get('PS_ONBOARDING_STEP_'.$i.'_COMPLETED');
 
-			if ($steps[$i] == 1)
+			/*
+if ($steps[$i] == 1)
 				Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $i+1);
+*/
 		}
+		
 		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
 		$this->context->smarty->assign(array(
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
