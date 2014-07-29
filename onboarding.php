@@ -108,7 +108,7 @@ class OnBoarding extends Module
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
 			'next_step_link' => $this->getCurrentStepLink(Tools::isSubmit('onboarding') ? $current_step+1 : $current_step),
 			'steps' => $steps,
-			'current_step_banner' => Tools::isSubmit('onboarding') ? $current_step+1 : $current_step,
+			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step+1 : $current_step,
 			'current_step' => $current_step,
 			'link' => $this->context->link,
 			'employee' => $this->context->employee,
