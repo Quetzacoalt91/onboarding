@@ -14,7 +14,9 @@ $( document ).ready(function() {
 	$('#onboarding-starter').removeClass('hide');
 
 	$('.close-button, .continue_editing').click(function() {
+		console.log('totot');
 		toggleOnboardingModal();
+		validateStep(current_step_onboarding);
 	});
 
 	if (display_onboarding_modal)
@@ -29,4 +31,16 @@ function toggleOnboardingModal()
 	else
 		$('.steps').animate({top: '-560px'}, 300);
 	$('.onboarding').toggleClass('minimized');
+}
+
+function validateStep(current_step)
+{
+	$.ajax({
+		type: 'POST',
+		headers: { "cache-control": "no-cache" },
+		url: onboarding_ajax_url,
+		async: true,
+		cache: false,
+		data: 'ajax=true&action=validate_step&current_step='+current_step
+	});
 }

@@ -26,7 +26,7 @@ class OnBoarding extends Module
 		Configuration::updateValue('PS_ONBOARDING_STEP_4_COMPLETED', 0);
 
 		if (parent::install() && $this->registerHook('displayBackOfficeHeader')
-			&& $this->registerHook('displayBackOfficeTop'))
+			&& $this->registerHook('displayBackOfficeTop') && $this->installTab())
 			return true;
 
 		return false;
@@ -34,10 +34,34 @@ class OnBoarding extends Module
 	
 	public function uninstall()
 	{
-		if (!parent::uninstall())
+		if (!parent::uninstall() || !$this->uninstallTab())
 			return false;
-
 		return true;
+	}
+	
+	public function installTab()
+	{
+		$tab = new Tab();
+		$tab->active = 1;
+		$tab->class_name = "AdminOnboarding";
+		$tab->name = array();
+		foreach (Language::getLanguages(true) as $lang)
+			$tab->name[$lang['id_lang']] = "Onboarding";
+		$tab->id_parent = 99999;
+		$tab->module = $this->name;
+		return $tab->add();
+	}
+	
+	public function uninstallTab()
+	{
+		$id_tab = (int)Tab::getIdFromClassName('AdminOnboarding');
+		if ($id_tab)
+		{
+			$tab = new Tab($id_tab);
+			return $tab->delete();
+		}
+		else
+			return false;
 	}
 
 	public function hookDisplayBackOfficeHeader()
@@ -86,6 +110,7 @@ class OnBoarding extends Module
 			'steps' => $steps,
 			'current_step_banner' => Tools::isSubmit('onboarding') ? $current_step+1 : $current_step,
 			'current_step' => $current_step,
+			'link' => $this->context->link,
 			'employee' => $this->context->employee,
 			'continue_editing_links' => array(
 				'theme' => $this->context->link->getAdminLink('AdminThemes'),

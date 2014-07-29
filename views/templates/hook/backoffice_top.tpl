@@ -1,4 +1,8 @@
-<script>var display_onboarding_modal={$display_onboarding_modal|escape:'int'} </script>
+<script>
+var display_onboarding_modal= {$display_onboarding_modal|escape:'int'};
+var current_step_onboarding = {$current_step|escape:'int'};
+var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
+</script>
 {capture name="onboardingStepTitle"}
 	{if $current_step_banner == 1}
 	{l s='Hey %s, welcome on your own online shop' sprintf=[$employee->firstname] mod='onboarding'}
