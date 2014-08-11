@@ -1,8 +1,11 @@
 $( document ).ready(function() {
 	$('#onboarding-launch').click(function() {
 		$('.gwd-page-container').addClass('gwd-gen-oxd9');
-		//$('.onboarding .steps').hide();
-		//$('.onboarding .final').show();
+		sleep(5400, function() {
+			$('.onboarding .steps').hide('slow', function() {
+				$('.onboarding .final').show('slow');
+			});
+		})
 	});
 
 	$('.steps a').click(function() {
@@ -43,4 +46,11 @@ function validateStep(current_step)
 		cache: false,
 		data: 'ajax=true&action=validate_step&current_step='+current_step
 	});
+}
+
+function sleep(time, callback)
+{
+    setTimeout(function() {
+    	callback();
+    } , time);
 }

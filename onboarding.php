@@ -9,7 +9,7 @@ class OnBoarding extends Module
 		$this->name = 'onboarding';
         $this->bootstrap = true;
 		$this->tab = 'administration';
-		$this->version = '0.1';
+		$this->version = '0.1.0';
 		$this->author = 'PrestaShop';
 		$this->displayName = $this->l('OnBoarding');
 		$this->description = $this->l('PrestaShop OnBoarding');
