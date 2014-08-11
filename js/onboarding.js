@@ -13,13 +13,16 @@ $( document ).ready(function() {
 	});
 
 	$('<div class="alert alert-onboarding"></div>').html($('#onboarding-starter')).detach().prependTo('#content');
-
 	$('#onboarding-starter').removeClass('hide');
 
 	$('.close-button, .continue_editing').click(function() {
-		console.log('totot');
 		toggleOnboardingModal();
 		validateStep(current_step_onboarding);
+	});
+
+	$('#final-button').click(function() {
+		$('.final').animate({top: '-560px'}, 300);
+		$('.overlay').hide();
 	});
 
 	if (display_onboarding_modal)
@@ -33,6 +36,7 @@ function toggleOnboardingModal()
 		$('.steps').animate({top: '-3px'}, 300);
 	else
 		$('.steps').animate({top: '-560px'}, 300);
+
 	$('.onboarding').toggleClass('minimized');
 }
 
@@ -53,4 +57,23 @@ function sleep(time, callback)
     setTimeout(function() {
     	callback();
     } , time);
+}
+
+function share_twitter_click(message)
+{
+	window.open('https://twitter.com/intent/tweet?button_hashtag=PrestaShop&text=' + message, 'sharertwt', 'toolbar=0,status=0,width=640,height=445');
+}
+
+function share_facebook_click()
+{
+	window.open('http://www.facebook.com/sharer.php?u=http://www.prestashop.com/', 'sharerfacebook', 'toolbar=0,status=0,width=660,height=445');
+}
+
+function share_google_click()
+{
+	window.open('https://plus.google.com/share?url=http://www.prestashop.com/', 'sharergplus', 'toolbar=0,status=0,width=660,height=445');
+}
+
+function share_linkedin_click() {
+	window.open('https://www.linkedin.com/shareArticle?title=PrestaShop&url=http://www.prestashop.com/download', 'sharerlinkedin', 'toolbar=0,status=0,width=600,height=450');
 }

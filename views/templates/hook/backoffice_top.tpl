@@ -17,7 +17,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	{else if $current_step_banner == 4}
 		{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
 	{else if $current_step_banner == 5}
-		{l s="-" mod="onboarding"}
+		{l s="If you feel you need more information, you can still have a look at PrestaShop Documentation: click on \"Help\" in the top right corner of your back-office!" mod="onboarding"}
 	{/if}
 {/capture}
 {capture name="onboardingStepButton"}
@@ -43,7 +43,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	{else if $current_step_banner == 4}
 		{l s="Get your shop ready for payments" mod="onboarding"}
 	{else if $current_step_banner == 5}
-		{l s="---" mod="onboarding"}
+		{l s="You are now ready to launch your shop." mod="onboarding"}
 	{/if}
 {/capture}
 
@@ -238,22 +238,43 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		</div>
 	</div>
 	<div class="panel final" style="display: none;">
-		<h3 class="text-center">{l s="Welcome to the community" mod="onboarding"}</h3>
-		<h4 class="text-center">{l s="Share the great news!" mod="onboarding"}</h4>
-		<div>
-			{l s="Share" mod="onboarding"}
-			<ul class="list-unstyled">
-				<li>
-					<i class="icon icon-facebook"></i>
-					Facebook
-				</li>
-				<li>
-					<i class="icon icon-twitter"></i>
-					Twitter
-				</li>
-			</ul>
-			
-			<input type="text" name="" value="{l s="I just launched my online shop with @PrestaShop. Check it out!" mod="onboarding"}" />
+		<div class="onboarding-intro">
+			<h3 class="text-center">
+			{$smarty.capture.onboardingStepModalTitle}
+			</h3>
+			<a class="close-button" href="#" id="final-button">
+				<i class="icon icon-times-circle"></i>
+			</a>
+		</div>
+		<div class="final-container">
+			<span class="title">
+				{l s='You are now ready to launch your shop. If you feel you need more information, you can still have a look at PrestaShop Documentation:' mod='onboarding'}
+				<br />
+				{l s='click on "Help" in the top right corner of your back-office!' mod='onboarding'}
+			</span>
+			<br />
+			<textarea name="social-text" id="social-text">{l s="I just launched my online shop with @PrestaShop. Check it out!" mod="onboarding"}</textarea>
+			<br />
+			<div class="col-lg-3 text-center">
+				<a href="#" class="btn btn-default" onclick="share_facebook_click();">
+					<i class="icon icon-facebook icon-4x"></i>
+				</a>
+			</div>
+			<div class="col-lg-3 text-center">
+				<a href="#" class="btn btn-default" onclick="share_twitter_click($('#social-text').text());">
+					<i class="icon icon-twitter icon-4x"></i>
+				</a>
+			</div>
+			<div class="col-lg-3 text-center">
+				<a href="#" class="btn btn-default" onclick="share_linkedin_click();">
+					<i class="icon icon-linkedin icon-4x"></i>
+				</a>
+			</div>
+			<div class="col-lg-3 text-center">
+				<a href="#" class="btn btn-default" onclick="share_google_click();">
+					<i class="icon icon-google-plus icon-4x"></i>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
