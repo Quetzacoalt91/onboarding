@@ -74,6 +74,7 @@ function share_google_click()
 	window.open('https://plus.google.com/share?url=http://www.prestashop.com/', 'sharergplus', 'toolbar=0,status=0,width=660,height=445');
 }
 
-function share_linkedin_click() {
+function share_linkedin_click()
+{
 	window.open('https://www.linkedin.com/shareArticle?title=PrestaShop&url=http://www.prestashop.com/download', 'sharerlinkedin', 'toolbar=0,status=0,width=600,height=450');
 }
