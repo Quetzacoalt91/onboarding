@@ -74,7 +74,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 {/capture}
 {capture name="onboardingCompletePercentage"}
 	{if $current_step == 1}
-	0
+	10%%
 	{else if $current_step == 2}
 	25%%
 	{else if $current_step == 3}
@@ -85,6 +85,21 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	100%%
 	{/if}
 {/capture}
+
+{capture name="onboardingPendingPercentage"}
+	{if $current_step == 1}
+	90%%
+	{else if $current_step == 2}
+	75%%
+	{else if $current_step == 3}
+	50%%
+	{else if $current_step == 4}
+	25%%
+	{else if $current_step == 5}
+	0%%
+	{/if}
+{/capture}
+
 <div class="onboarding minimized">
 	<div class="overlay"></div>
 	<div class="panel steps">
@@ -93,19 +108,23 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 				<div class="col-md-6">
 					<h4>{$smarty.capture.onboardingStepBannerTitle}</h4>
 				</div>
-				<div class="col-md-6">
-					<div class="progress progress-striped">
-						<div class="progress-bar" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
-							<span>{$smarty.capture.onboardingComplete}</span>
-						</div>
-					</div>
-				</div>
 			</div>
 			<p>{$smarty.capture.onboardingStepParagraph}</p>
+			{if $current_step_banner == 1}
 			<a href="{$next_step_link}" class="btn btn-primary quick-start-button">
 				{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
 				<i class="icon icon-angle-right icon-lg"></i>
 			</a>
+			{else}
+			<div class="progress progress-striped">
+				<div class="progress-bar progress-bar-success" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
+					<span class="sr-only">{$smarty.capture.onboardingComplete}</span>
+				</div>
+				<div class="progress-bar progress-bar-warning progress-bar-striped" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}" data-placement="bottom" data-toggle="popover" data-html="true" data-content="<a href='{$next_step_link}' class='btn btn-primary quick-start-button'>{$smarty.capture.onboardingStepButton}&nbsp;&nbsp; <i class='icon icon-angle-right icon-lg'></i></a>">
+					<span class="sr-only">20% Complete (warning)</span>
+				</div>
+			</div>
+			{/if}
 		</div>
 		
 		<div class="onboarding-intro">
@@ -116,6 +135,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 				<i class="icon icon-times-circle"></i>
 			</a>
 		</div>
+
 		<div class="steps-list-container">
 			<ul class="steps-list">
 				<li {if $steps[1] == 1}class="checked"{/if}{if $current_step == 1}class="active"{/if}{if $current_step < 1}class="inactive"{/if}>
@@ -208,7 +228,6 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 
 				<p>{l s="Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public." mod="onboarding"}</p>
 			{/if}
-
 		</div>
 		<div class="steps-animation-container">
 			{if $current_step == 1}

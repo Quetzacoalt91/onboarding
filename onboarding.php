@@ -31,7 +31,7 @@ class OnBoarding extends Module
 	public function __construct()
 	{
 		$this->name = 'onboarding';
-        	$this->bootstrap = true;
+        $this->bootstrap = true;
 		$this->tab = 'administration';
 		$this->version = '0.1.0';
 		$this->author = 'PrestaShop';
@@ -60,6 +60,7 @@ class OnBoarding extends Module
 	{
 		if (!parent::uninstall() || !$this->uninstallTab())
 			return false;
+
 		return true;
 	}
 	
@@ -69,8 +70,10 @@ class OnBoarding extends Module
 		$tab->active = 1;
 		$tab->class_name = "AdminOnboarding";
 		$tab->name = array();
+
 		foreach (Language::getLanguages(true) as $lang)
 			$tab->name[$lang['id_lang']] = "Onboarding";
+
 		$tab->id_parent = 99999;
 		$tab->module = $this->name;
 		return $tab->add();
@@ -79,6 +82,7 @@ class OnBoarding extends Module
 	public function uninstallTab()
 	{
 		$id_tab = (int)Tab::getIdFromClassName('AdminOnboarding');
+
 		if ($id_tab)
 		{
 			$tab = new Tab($id_tab);
@@ -158,7 +162,8 @@ if ($steps[$i] == 1)
 			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding&addproduct',
 			3 => $this->context->link->getAdminLink('AdminPayment').'&onboarding',
 			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
-			);
+		);
+
 		return isset($links[$id_step]) ? $links[$id_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding';
 	}
 }

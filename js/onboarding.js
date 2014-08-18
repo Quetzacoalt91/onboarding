@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+	$('#onboarding-progress-bar').popover('show');
 	$('#onboarding-launch').click(function() {
 		$('.gwd-page-container').addClass('gwd-gen-oxd9');
 		sleep(5400, function() {
@@ -28,6 +29,7 @@ $( document ).ready(function() {
 	if (display_onboarding_modal)
 		toggleOnboardingModal();
 		
+
 });
 
 function toggleOnboardingModal() 
