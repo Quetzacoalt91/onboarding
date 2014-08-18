@@ -36,7 +36,7 @@ class OnBoarding extends Module
 		$this->version = '0.1.0';
 		$this->author = 'PrestaShop';
 		$this->displayName = $this->l('OnBoarding');
-		$this->description = $this->l('PrestaShop OnBoarding');
+		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.');
 
 		parent::__construct();
 	}
