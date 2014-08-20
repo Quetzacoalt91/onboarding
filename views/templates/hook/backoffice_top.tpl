@@ -116,12 +116,23 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 				<i class="icon icon-angle-right icon-lg"></i>
 			</a>
 			{else}
-			<div class="progress progress-striped">
-				<div class="progress-bar progress-bar-success" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
-					<span class="sr-only">{$smarty.capture.onboardingComplete}</span>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="progress progress-striped">
+						<div class="progress-bar progress-bar-success" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
+							<span class="sr-only">{$smarty.capture.onboardingComplete}</span>
+						</div>
+						<div class="progress-bar progress-bar-warning progress-bar-striped" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}">
+						</div>
+					</div>
 				</div>
-				<div class="progress-bar progress-bar-warning progress-bar-striped" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}" data-placement="bottom" data-toggle="popover" data-html="true" data-content="<a href='{$next_step_link}' class='btn btn-primary quick-start-button'>{$smarty.capture.onboardingStepButton}&nbsp;&nbsp; <i class='icon icon-angle-right icon-lg'></i></a>">
-					<span class="sr-only">20% Complete (warning)</span>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-12">
+					<a href="{$next_step_link}" class="btn btn-primary quick-start-button">
+						{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
+						<i class="icon icon-angle-right icon-lg"></i>
+					</a>
 				</div>
 			</div>
 			{/if}
@@ -276,22 +287,22 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			<br />
 			<div class="col-lg-3 text-center">
 				<a href="#" class="btn btn-default" onclick="share_facebook_click();">
-					<i class="icon icon-facebook icon-4x"></i>
+					<i class="icon icon-facebook icon-4x icon-fw"></i>
 				</a>
 			</div>
 			<div class="col-lg-3 text-center">
 				<a href="#" class="btn btn-default" onclick="share_twitter_click($('#social-text').text());">
-					<i class="icon icon-twitter icon-4x"></i>
+					<i class="icon icon-twitter icon-4x icon-fw"></i>
 				</a>
 			</div>
 			<div class="col-lg-3 text-center">
 				<a href="#" class="btn btn-default" onclick="share_linkedin_click();">
-					<i class="icon icon-linkedin icon-4x"></i>
+					<i class="icon icon-linkedin icon-4x icon-fw"></i>
 				</a>
 			</div>
 			<div class="col-lg-3 text-center">
 				<a href="#" class="btn btn-default" onclick="share_google_click();">
-					<i class="icon icon-google-plus icon-4x"></i>
+					<i class="icon icon-google-plus icon-4x icon-fw"></i>
 				</a>
 			</div>
 		</div>
