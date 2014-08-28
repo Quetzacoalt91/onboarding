@@ -99,20 +99,6 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	{/if}
 {/capture}
 
-{capture name="onboardingPendingPercentage"}
-	{if $current_step == 1}
-	90%%
-	{else if $current_step == 2}
-	75%%
-	{else if $current_step == 3}
-	50%%
-	{else if $current_step == 4}
-	25%%
-	{else if $current_step == 5}
-	0%%
-	{/if}
-{/capture}
-
 <div class="onboarding minimized">
 	<div class="overlay"></div>
 	<div class="panel steps">
@@ -122,29 +108,18 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					<h3>Getting Started with PrestaShop</h3>
 				</div>
 			</div>
-<!-- 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="progress">
-						<div class="progress-bar progress-bar-info" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
-							<span class="sr-only">{$smarty.capture.onboardingComplete}</span>
-						</div>
-						<div class="" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}">
-						</div>
-					</div>
-				</div>
-			</div> -->
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2">
-					<div class="onboarding-step step-first step-success"></div>
+					<div class="onboarding-step step-first{if $current_step == 1} step-in-progress active{elseif $current_step > 1} active step-success{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step step-in-progress active"></div>
+					<div class="onboarding-step{if $current_step == 2} step-in-progress active{elseif $current_step > 2} active step-success{elseif $current_step < 2} step-todo{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step step-todo"></div>
+					<div class="onboarding-step{if $current_step == 3} step-in-progress active{elseif $current_step > 3} active step-success{elseif $current_step < 3} step-todo{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step step-todo step-final"></div>
+					<div class="onboarding-step step-final{if $current_step == 4} step-in-progress active{elseif $current_step > 4} active step-success{elseif $current_step < 4} step-todo{/if}"></div>
 				</div>
 			</div>
 			<div class="row">
