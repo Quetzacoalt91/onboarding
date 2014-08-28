@@ -124,16 +124,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2 text-center">
-					Customize your shop
+					{l s="Customize your shop" mod="onboarding"}
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					Add products
+					{l s="Add products" mod="onboarding"}
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					Configure payments
+					{l s="Configure payments" mod="onboarding"}
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					Launch
+					{l s="Choose your shipping options" mod="onboarding"}
 				</div>
 			</div>
 			<hr>
