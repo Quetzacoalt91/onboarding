@@ -20,7 +20,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		{l s="If you feel you need more information, you can still have a look at PrestaShop Documentation: click on \"Help\" in the top right corner of your back-office!" mod="onboarding"}
 	{/if}
 {/capture}
-{capture name="onboardingStepButton"}
+<!-- {capture name="onboardingStepButton"}
 	{if $current_step_banner == 1}
 		{l s="Let's start!" mod="onboarding"}
 	{else if $current_step_banner == 2}
@@ -29,6 +29,19 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		{l s="Next: set up your payment methods" mod="onboarding"}
 	{else if $current_step_banner == 4}
 		{l s="Next: let's see shipping methods" mod="onboarding"}
+	{else if $current_step_banner == 5}
+		{l s="I'm all good, let's launch!" mod="onboarding"}
+	{/if}
+{/capture} -->
+{capture name="onboardingStepButton"}
+	{if $current_step_banner == 1}
+		{l s="Let's start!" mod="onboarding"}
+	{else if $current_step_banner == 2}
+		{l s="I'm done, take me to next step" mod="onboarding"}
+	{else if $current_step_banner == 3}
+		{l s="I'm done, take me to next step" mod="onboarding"}
+	{else if $current_step_banner == 4}
+		{l s="I'm done, take me to next step" mod="onboarding"}
 	{else if $current_step_banner == 5}
 		{l s="I'm all good, let's launch!" mod="onboarding"}
 	{/if}
@@ -105,37 +118,69 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	<div class="panel steps">
 		<div id="onboarding-starter" class="hide">
 			<div class="row">
-				<div class="col-md-6">
-					<h4>{$smarty.capture.onboardingStepBannerTitle}</h4>
+				<div class="col-md-12">
+					<h3>Getting Started with PrestaShop</h3>
 				</div>
 			</div>
-			<p>{$smarty.capture.onboardingStepParagraph}</p>
-			{if $current_step_banner == 1}
-			<a href="{$next_step_link}" class="btn btn-primary quick-start-button">
-				{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
-				<i class="icon icon-angle-right icon-lg"></i>
-			</a>
-			{else}
-			<div class="row">
-				<div class="col-md-12">
-					<div class="progress progress-striped">
-						<div class="progress-bar progress-bar-success" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
+<!-- 			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="progress">
+						<div class="progress-bar progress-bar-info" role="progressbar" style="width: {$smarty.capture.onboardingCompletePercentage};">
 							<span class="sr-only">{$smarty.capture.onboardingComplete}</span>
 						</div>
-						<div class="progress-bar progress-bar-warning progress-bar-striped" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}">
+						<div class="" id="onboarding-progress-bar" style="width: {$smarty.capture.onboardingPendingPercentage}">
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row text-center">
-				<div class="col-md-12">
-					<a href="{$next_step_link}" class="btn btn-primary quick-start-button">
-						{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
-						<i class="icon icon-angle-right icon-lg"></i>
-					</a>
+			</div> -->
+			<div class="row">
+				<div class="col-xs-3 col-md-2 col-md-offset-2">
+					<div class="onboarding-step step-first step-success"></div>
+				</div>
+				<div class="col-xs-3 col-md-2">
+					<div class="onboarding-step step-in-progress active"></div>
+				</div>
+				<div class="col-xs-3 col-md-2">
+					<div class="onboarding-step step-todo"></div>
+				</div>
+				<div class="col-xs-3 col-md-2">
+					<div class="onboarding-step step-todo step-final"></div>
 				</div>
 			</div>
-			{/if}
+			<div class="row">
+				<div class="col-xs-3 col-md-2 col-md-offset-2 text-center">
+					Customize your shop
+				</div>
+				<div class="col-xs-3 col-md-2 text-center">
+					Add products
+				</div>
+				<div class="col-xs-3 col-md-2 text-center">
+					Configure payments
+				</div>
+				<div class="col-xs-3 col-md-2 text-center">
+					Launch
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-lg-8">
+					<h4>{$smarty.capture.onboardingStepBannerTitle}</h4>
+					<p>{$smarty.capture.onboardingStepParagraph}</p>
+				</div>
+				<div class="col-lg-4 onboarding-action-container">
+					{if $current_step_banner == 1}
+						<a href="{$next_step_link}" class="btn btn-success quick-start-button">
+							{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
+							<i class="icon icon-angle-right icon-lg"></i>
+						</a>
+					{else}
+						<a href="{$next_step_link}" class="btn btn-default btn-lg quick-start-button pull-right">
+							{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
+							<i class="icon icon-angle-right icon-lg"></i>
+						</a>
+					{/if}
+				</div>
+			</div>
 		</div>
 		
 		<div class="onboarding-intro">
