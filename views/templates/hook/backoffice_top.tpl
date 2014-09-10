@@ -52,7 +52,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	{else if $current_step_banner == 2}
 		{l s="Customize your shop's look and feel" mod="onboarding"}
 	{else if $current_step_banner == 3}
-		{l s="Add you first products" mod="onboarding"}
+		{l s="Add your first products" mod="onboarding"}
 	{else if $current_step_banner == 4}
 		{l s="Get your shop ready for payments" mod="onboarding"}
 	{else if $current_step_banner == 5}
@@ -143,17 +143,10 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					<p>{$smarty.capture.onboardingStepParagraph}</p>
 				</div>
 				<div class="col-lg-4 onboarding-action-container">
-					{if $current_step_banner == 1}
-						<a href="{$next_step_link}" class="btn btn-success quick-start-button">
-							{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
-							<i class="icon icon-angle-right icon-lg"></i>
-						</a>
-					{else}
-						<a href="{$next_step_link}" class="btn btn-default btn-lg quick-start-button pull-right">
-							{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
-							<i class="icon icon-angle-right icon-lg"></i>
-						</a>
-					{/if}
+					<a href="{$next_step_link}" class="btn btn-default btn-lg quick-start-button pull-right">
+						{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
+						<i class="icon icon-angle-right icon-lg"></i>
+					</a>
 				</div>
 			</div>
 		</div>

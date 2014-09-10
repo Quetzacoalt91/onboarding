@@ -26,12 +26,25 @@
 
 class AdminOnboardingController extends ModuleAdminController
 {	
-	public function ajaxProcessValidateStep()
+	public function postProcess()
 	{
 		$current_step = (int)Tools::getValue('current_step');
-		if ($current_step && $current_step < 5)
-			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step + 1);
+		
+		$links = array(
+			0 => $this->context->link->getAdminLink('AdminDashboard').'&onboarding',
+			1 => $this->context->link->getAdminLink('AdminThemes').'&onboarding',
+			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding&addproduct',
+			3 => $this->context->link->getAdminLink('AdminPayment').'&onboarding',
+			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
+		);
+		
+		$current_step_to_validate = $current_step -1;
+		if ($current_step_to_validate)
+			Configuration::updateValue('PS_ONBOARDING_STEP_'.(int)$current_step_to_validate.'_COMPLETED', 1);		
+		
+		if ($current_step)
+			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step);
 
-		die();
+		Tools::redirectAdmin(isset($links[$current_step]) ? $links[$current_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding');
 	}
 }

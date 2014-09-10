@@ -96,26 +96,6 @@ class OnBoarding extends Module
 	{
 		if (!$this->active)
 			return;
-		$controller = Tools::getValue('controller');
-				
-		if (Tools::isSubmit('onboarding'))
-		{
-			switch ($controller)
-			{
-				case 'AdminProducts':
-					Configuration::updateValue('PS_ONBOARDING_STEP_1_COMPLETED', 1);
-					break;
-				case 'AdminPayment':
-					Configuration::updateValue('PS_ONBOARDING_STEP_2_COMPLETED', 1);
-					break;
-				case 'AdminCarriers':
-					Configuration::updateValue('PS_ONBOARDING_STEP_3_COMPLETED', 1);
-					break;
-				case 'AdminDashboard':
-					Configuration::updateValue('PS_ONBOARDING_STEP_4_COMPLETED', 1);
-					break;
-			}
-		}
 		
 		$this->context->controller->addCSS($this->_path.'css/onboarding.css');
 		$this->context->controller->addJS($this->_path.'js/onboarding.js');
@@ -137,7 +117,7 @@ if ($steps[$i] == 1)
 		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
 		$this->context->smarty->assign(array(
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
-			'next_step_link' => $this->getCurrentStepLink(Tools::isSubmit('onboarding') ? $current_step+1 : $current_step),
+			'next_step_link' => $this->getCurrentStepLink($current_step),
 			'steps' => $steps,
 			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step+1 : $current_step,
 			'current_step' => $current_step,
@@ -157,13 +137,6 @@ if ($steps[$i] == 1)
 	
 	public function getCurrentStepLink($id_step)
 	{
-		$links = array(
-			1 => $this->context->link->getAdminLink('AdminThemes').'&onboarding',
-			2 => $this->context->link->getAdminLink('AdminProducts').'&onboarding&addproduct',
-			3 => $this->context->link->getAdminLink('AdminPayment').'&onboarding',
-			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
-		);
-
-		return isset($links[$id_step]) ? $links[$id_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding';
+		return $this->context->link->getAdminLink('AdminOnboarding').'&current_step='.(Tools::isSubmit('onboarding') ? (int)$id_step + 1 : (int)$id_step);
 	}
 }

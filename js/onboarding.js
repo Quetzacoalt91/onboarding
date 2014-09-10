@@ -18,9 +18,9 @@ $( document ).ready(function() {
 
 	$('.close-button, .continue_editing').click(function() {
 		toggleOnboardingModal();
-		validateStep(current_step_onboarding);
 	});
-
+	
+	
 	$('#final-button').click(function() {
 		$('.final').animate({top: '-560px'}, 300);
 		$('.overlay').hide();
@@ -42,7 +42,7 @@ function toggleOnboardingModal()
 	$('.onboarding').toggleClass('minimized');
 }
 
-function validateStep(current_step)
+function validateStep(current_step, href)
 {
 	$.ajax({
 		type: 'POST',
@@ -50,7 +50,11 @@ function validateStep(current_step)
 		url: onboarding_ajax_url,
 		async: true,
 		cache: false,
-		data: 'ajax=true&action=validate_step&current_step='+current_step
+		data: 'ajax=true&action=validate_step&current_step='+current_step,
+		success: function(result)
+		{
+			window.location.href = href;
+		}
 	});
 }
 
