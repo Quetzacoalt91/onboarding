@@ -44,6 +44,7 @@ class OnBoarding extends Module
 	public function install()
 	{
 		Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', 1);
+		Configuration::updateValue('PS_ONBOARDING_LAST_VALIDATE_STEP', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_1_COMPLETED', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_2_COMPLETED', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_3_COMPLETED', 0);
@@ -121,6 +122,7 @@ if ($steps[$i] == 1)
 			'steps' => $steps,
 			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step+1 : $current_step,
 			'current_step' => $current_step,
+			'last_validate_step' => Tools::isSubmit('onboarding') ? (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP') + 1 : (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP'),
 			'link' => $this->context->link,
 			'employee' => $this->context->employee,
 			'continue_editing_links' => array(
