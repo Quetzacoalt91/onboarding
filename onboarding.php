@@ -31,7 +31,7 @@ class OnBoarding extends Module
 	public function __construct()
 	{
 		$this->name = 'onboarding';
-        $this->bootstrap = true;
+		$this->bootstrap = true;
 		$this->tab = 'administration';
 		$this->version = '0.1.0';
 		$this->author = 'PrestaShop';
@@ -39,6 +39,9 @@ class OnBoarding extends Module
 		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.');
 
 		parent::__construct();
+
+		if (Configuration::get('PS_ONBOARDING_STEP_4_COMPLETED'))
+			$this->uninstall();
 	}
 
 	public function install()
@@ -56,7 +59,7 @@ class OnBoarding extends Module
 
 		return false;
 	}
-	
+
 	public function uninstall()
 	{
 		if (!parent::uninstall() || !$this->uninstallTab())
@@ -64,22 +67,22 @@ class OnBoarding extends Module
 
 		return true;
 	}
-	
+
 	public function installTab()
 	{
 		$tab = new Tab();
 		$tab->active = 1;
-		$tab->class_name = "AdminOnboarding";
+		$tab->class_name = 'AdminOnboarding';
 		$tab->name = array();
 
 		foreach (Language::getLanguages(true) as $lang)
-			$tab->name[$lang['id_lang']] = "Onboarding";
+			$tab->name[$lang['id_lang']] = 'Onboarding';
 
 		$tab->id_parent = 99999;
 		$tab->module = $this->name;
 		return $tab->add();
 	}
-	
+
 	public function uninstallTab()
 	{
 		$id_tab = (int)Tab::getIdFromClassName('AdminOnboarding');
@@ -97,7 +100,7 @@ class OnBoarding extends Module
 	{
 		if (!$this->active)
 			return;
-		
+
 		$this->context->controller->addCSS($this->_path.'css/onboarding.css');
 		$this->context->controller->addJS($this->_path.'js/onboarding.js');
 	}
@@ -105,29 +108,22 @@ class OnBoarding extends Module
 	public function hookDisplayBackOfficeTop()
 	{
 		$steps = array();
-		for ($i=1; $i<5; $i++)
-		{
+		for ($i = 1; $i < 5; $i++)
 			$steps[$i] = Configuration::get('PS_ONBOARDING_STEP_'.$i.'_COMPLETED');
 
-			/*
-if ($steps[$i] == 1)
-				Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $i+1);
-*/
-		}
-		
 		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
 		$this->context->smarty->assign(array(
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
 			'next_step_link' => $this->getCurrentStepLink($current_step),
 			'steps' => $steps,
-			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step+1 : $current_step,
+			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step + 1 : $current_step,
 			'current_step' => $current_step,
 			'last_validate_step' => Tools::isSubmit('onboarding') ? (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP') + 1 : (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP'),
 			'link' => $this->context->link,
 			'employee' => $this->context->employee,
 			'continue_editing_links' => array(
 				'theme' => $this->context->link->getAdminLink('AdminThemes'),
-				'product' => $this->context->link->getAdminLink('AdminProducts'),
+				'product' => $this->context->link->getAdminLink('AdminProducts').'&addproduct',
 				'import' => $this->context->link->getAdminLink('AdminImport'),
 				'payment' => $this->context->link->getAdminLink('AdminPayment'),
 				'carrier' => $this->context->link->getAdminLink('AdminCarriers'),
@@ -136,7 +132,7 @@ if ($steps[$i] == 1)
 
 		return $this->display(__FILE__, 'backoffice_top.tpl');
 	}
-	
+
 	public function getCurrentStepLink($id_step)
 	{
 		return $this->context->link->getAdminLink('AdminOnboarding').'&current_step='.(Tools::isSubmit('onboarding') ? (int)$id_step + 1 : (int)$id_step);

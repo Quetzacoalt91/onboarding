@@ -1,6 +1,6 @@
 <script>
-var display_onboarding_modal= {$display_onboarding_modal|escape:'int'};
-var current_step_onboarding = {$current_step|escape:'int'};
+var display_onboarding_modal= {$display_onboarding_modal|intval};
+var current_step_onboarding = {$current_step|escape|intval};
 var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 </script>
 {capture name="onboardingStepParagraph"}
@@ -124,16 +124,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2 text-center">
-					<a style="{if $current_step <= 1} color:gray; text-decoration:none {/if}" href="{if $current_step > 1}{$continue_editing_links.theme}{else}#{/if}">{l s="Customize your shop" mod="onboarding"}</a>
+					<a style="{if $current_step <= 1} color:gray; text-decoration:none {/if}"{if $current_step > 1} href="{$continue_editing_links.theme}"{/if}>{l s="Customize your shop" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 2} color:gray; text-decoration:none {/if}" href="{if $current_step > 1}{$continue_editing_links.product}{else}#{/if}">{l s="Add products" mod="onboarding"}</a>
+					<a style="{if $current_step <= 2} color:gray; text-decoration:none {/if}"{if $current_step > 2} href="{$continue_editing_links.product}"{/if}>{l s="Add products" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 3} color:gray; text-decoration:none {/if}" href="{if $current_step > 1}{$continue_editing_links.payment}{else}#{/if}">{l s="Configure payments" mod="onboarding"}</a>
+					<a style="{if $current_step <= 3} color:gray; text-decoration:none {/if}"{if $current_step > 3} href="{$continue_editing_links.payment}"{/if}>{l s="Configure payments" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 4} color:gray; text-decoration:none {/if}" href="{if $current_step > 1}{$continue_editing_links.carrier}{else}#{/if}">{l s="Choose your shipping options" mod="onboarding"}</a>
+					<a style="{if $current_step <= 4} color:gray; text-decoration:none {/if}"{if $current_step > 4} href="{$continue_editing_links.carrier}"{/if}>{l s="Choose your shipping options" mod="onboarding"}</a>
 				</div>
 			</div>
 			<hr>
@@ -150,7 +150,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="onboarding-intro">
 			<h3 class="text-center">
 			{$smarty.capture.onboardingStepModalTitle}
@@ -169,7 +169,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 						{l s="Give your shop its own identity based on your brand." mod="onboarding"}<br/>
 						{l s="You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique." mod="onboarding"}<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
-							<i class="icon icon-pencil icon-lg"></i> 
+							<i class="icon icon-pencil icon-lg"></i>
 							{l s="OK, take me to my theme" mod="onboarding"}</a>
 						</p>
 					{else if $steps[1] == 1}
@@ -205,7 +205,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 							{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
 							<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
-								<i class="icon icon-credit-card icon-lg"></i> 
+								<i class="icon icon-credit-card icon-lg"></i>
 								{l s="Show me payment methods" mod="onboarding"}
 							</a>
 						</p>
@@ -218,13 +218,13 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 				<li {if $steps[4] == 1}class="checked"{/if}{if $current_step == 4}class="active"{/if}{if $current_step < 4}class="inactive"{/if}>
 					<span class="title" >{l s='Set up your shipping methods'}</span>
 					{if $steps[4] == 0 && $current_step == 4}
-					<p class="desc">	
+					<p class="desc">
 						{l s="Unless you are only selling virtual products, you must register your shipping partners into PrestaShop." mod="onboarding"}<br/>
 						{l s="Without this your customers won't be able to enjoy your products!" mod="onboarding"}
 						<br/>
 						<br/>
 						<a class="btn btn-primary continue_editing" href="#">
-							<i class="icon icon-truck icon-lg"></i> 
+							<i class="icon icon-truck icon-lg"></i>
 							{l s="Let's see about shipping" mod="onboarding"}
 						</a>
 					</p>
@@ -238,20 +238,21 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			{if $current_step == 5}
 				<div class="step-launch">
 					<button id="onboarding-launch" class="btn btn-block btn-lg btn-primary">
-						<i class="icon icon-check icon-lg"></i> 
+						<i class="icon icon-check icon-lg"></i>
 						{l s="Launch" mod="onboarding"}
 					</button>
 				</div>
-			{/if}
-
-			{if $current_step == 6}
+			{elseif $current_step == 6}
 				<p>{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.'  mod='onboarding'}</p>
 
 				<p>{l s="To dive deeper in the configuration of your shop, you should read the <a>'First steps with PrestaShop 1.6'</a> chapter of the PrestaShop User Guide." mod="onboarding"}</p>
 				href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6
 
 				<p>{l s="Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public." mod="onboarding"}</p>
-			{/if}
+			{else}
+				<a href="#" class="skip">{l s="Skip Tutorial" mod="onboarding"}</a>
+			 {/if}
+
 		</div>
 		<div class="steps-animation-container">
 			{if $current_step == 1}
