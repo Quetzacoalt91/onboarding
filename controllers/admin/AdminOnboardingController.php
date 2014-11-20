@@ -29,7 +29,6 @@ class AdminOnboardingController extends ModuleAdminController
 	public function postProcess()
 	{
 		$current_step = (int)Tools::getValue('current_step');
-		$last_validate_step = Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP');
 
 		$links = array(
 			0 => $this->context->link->getAdminLink('AdminDashboard').'&onboarding',
@@ -39,14 +38,7 @@ class AdminOnboardingController extends ModuleAdminController
 			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
 		);
 
-		$current_step_to_validate = $current_step - 1;
-
-		if ($current_step_to_validate && $current_step_to_validate < 5)
-			Configuration::updateValue('PS_ONBOARDING_STEP_'.(int)$current_step_to_validate.'_COMPLETED', 1);
-
-		Configuration::updateValue('PS_ONBOARDING_LAST_VALIDATE_STEP', $current_step_to_validate);
-
-		if ($current_step && $current_step < 5)
+		if ($current_step)
 			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step);
 
 		Tools::redirectAdmin(isset($links[$current_step]) ? $links[$current_step] : Context::getContext()->link->getAdminLink('AdminDashboard')
