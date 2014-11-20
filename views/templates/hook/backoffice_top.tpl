@@ -110,16 +110,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2">
-					<div class="onboarding-step step-first {if $last_validate_step == 0} step-todo {else}{if $current_step == 1} step-in-progress active{elseif $current_step > 1} active step-success{/if}{/if}"></div>
+					<div class="onboarding-step step-first {if $last_validate_step == 0} step-todo{else}{if $current_step == 1} step-in-progress active{elseif $current_step > 1} active step-success{/if}{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step {if $last_validate_step == 1} step-todo {else}{if $current_step == 2} step-in-progress active{elseif $current_step > 2} active step-success{elseif $current_step < 2} step-todo{/if}{/if}"></div>
+					<div class="onboarding-step {if $last_validate_step >= 1}{if $current_step == 2} step-in-progress active{elseif $current_step > 2} active step-success{elseif $current_step < 2} step-todo{/if}{else} step-todo{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step {if $last_validate_step == 2} step-todo {else}{if $current_step == 3} step-in-progress active{elseif $current_step > 3} active step-success{elseif $current_step < 3} step-todo{/if}{/if}"></div>
+					<div class="onboarding-step {if $last_validate_step >= 2}{if $current_step == 3} step-in-progress active{elseif $current_step > 3} active step-success{elseif $current_step < 3} step-todo{/if}{else} step-todo{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step step-final {if $last_validate_step == 3} step-todo {else}{if $current_step == 4} step-in-progress active{elseif $current_step > 4} active step-success{elseif $current_step < 4} step-todo{/if}{/if}"></div>
+					<div class="onboarding-step step-final {if $last_validate_step >= 3}{if $current_step == 4} step-in-progress active{elseif $current_step > 4} active step-success{elseif $current_step < 4} step-todo{/if}{else} step-todo{/if}"></div>
 				</div>
 			</div>
 			<div class="row">

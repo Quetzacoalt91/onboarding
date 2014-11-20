@@ -112,6 +112,7 @@ class OnBoarding extends Module
 			$steps[$i] = Configuration::get('PS_ONBOARDING_STEP_'.$i.'_COMPLETED');
 
 		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
+
 		$this->context->smarty->assign(array(
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
 			'next_step_link' => $this->getCurrentStepLink($current_step),
@@ -127,7 +128,7 @@ class OnBoarding extends Module
 				'import' => $this->context->link->getAdminLink('AdminImport'),
 				'payment' => $this->context->link->getAdminLink('AdminPayment'),
 				'carrier' => $this->context->link->getAdminLink('AdminCarriers'),
-				)
+			)
 		));
 
 		return $this->display(__FILE__, 'backoffice_top.tpl');

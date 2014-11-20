@@ -49,6 +49,7 @@ class AdminOnboardingController extends ModuleAdminController
 		if ($current_step && $current_step < 5)
 			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step);
 
-		Tools::redirectAdmin(isset($links[$current_step]) ? $links[$current_step] : Context::getContext()->link->getAdminLink('AdminDashboard').'&onboarding');
+		Tools::redirectAdmin(isset($links[$current_step]) ? $links[$current_step] : Context::getContext()->link->getAdminLink('AdminDashboard')
+			.'&onboarding');
 	}
 }
