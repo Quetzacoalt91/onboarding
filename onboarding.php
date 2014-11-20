@@ -40,13 +40,13 @@ class OnBoarding extends Module
 
 		parent::__construct();
 
-		if (Configuration::get('PS_ONBOARDING_STEP_4_COMPLETED'))
+		if (Configuration::get('PS_ONBOARDING_CURRENT_STEP') >= 5)
 			$this->uninstall();
 	}
 
 	public function install()
 	{
-		Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', 1);
+		Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', 0);
 		Configuration::updateValue('PS_ONBOARDING_LAST_VALIDATE_STEP', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_1_COMPLETED', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_2_COMPLETED', 0);
@@ -107,20 +107,12 @@ class OnBoarding extends Module
 
 	public function hookDisplayBackOfficeTop()
 	{
-		$steps = array();
-		for ($i = 1; $i < 5; $i++)
-			$steps[$i] = Configuration::get('PS_ONBOARDING_STEP_'.$i.'_COMPLETED');
-
 		$current_step = (int)Configuration::get('PS_ONBOARDING_CURRENT_STEP');
 
 		$this->context->smarty->assign(array(
 			'display_onboarding_modal' => (int)Tools::isSubmit('onboarding'),
 			'next_step_link' => $this->getCurrentStepLink($current_step),
-			'steps' => $steps,
-			'current_step_banner' => Tools::isSubmit('onboarding') && $current_step < 4 ? $current_step + 1 : $current_step,
-			'current_step' => $current_step,
-			'last_validate_step' => Tools::isSubmit('onboarding') ? (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP') + 1 : (int)Configuration::get('PS_ONBOARDING_LAST_VALIDATE_STEP'),
-			'link' => $this->context->link,
+			'current_step' => $current_step,'link' => $this->context->link,
 			'employee' => $this->context->employee,
 			'continue_editing_links' => array(
 				'theme' => $this->context->link->getAdminLink('AdminThemes'),
@@ -136,6 +128,6 @@ class OnBoarding extends Module
 
 	public function getCurrentStepLink($id_step)
 	{
-		return $this->context->link->getAdminLink('AdminOnboarding').'&current_step='.(Tools::isSubmit('onboarding') ? (int)$id_step + 1 : (int)$id_step);
+		return $this->context->link->getAdminLink('AdminOnboarding').'&current_step='.((int)$id_step + 1);
 	}
 }

@@ -4,58 +4,41 @@ var current_step_onboarding = {$current_step|escape|intval};
 var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 </script>
 {capture name="onboardingStepParagraph"}
-	{if $current_step_banner == 1}
+	{if $current_step == 0}
 		{l s='Hey %s, welcome on your own online shop' sprintf=[$employee->firstname] mod='onboarding'}<br/>
 		{l s="Follow the guide and take the first steps with your online shop!" mod="onboarding"}
-	{else if $current_step_banner == 2}
+	{else if $current_step == 1}
 		{l s="Check out our catalog to get a new theme or customize the current default theme." mod="onboarding"}<br/>
 		{l s="Add your logo, play on fonts and colors... Give this special look to your shop!" mod="onboarding"}
-	{else if $current_step_banner == 3}
+	{else if $current_step == 2}
 		{l s="Start your product catalog with a first product." mod="onboarding"}<br/>
 		{l s="Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image!" mod="onboarding"}<br/>
 		{l s="If you already have your product base in a .CSV file, save time and make an import!" mod="onboarding"}
-	{else if $current_step_banner == 4}
+	{else if $current_step == 3}
 		{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
-	{else if $current_step_banner == 5}
+	{else if $current_step == 4}
 		{l s="If you feel you need more information, you can still have a look at PrestaShop Documentation: click on \"Help\" in the top right corner of your back-office!" mod="onboarding"}
 	{/if}
 {/capture}
-<!-- {capture name="onboardingStepButton"}
-	{if $current_step_banner == 1}
-		{l s="Let's start!" mod="onboarding"}
-	{else if $current_step_banner == 2}
-		{l s="Next: create your first products" mod="onboarding"}
-	{else if $current_step_banner == 3}
-		{l s="Next: set up your payment methods" mod="onboarding"}
-	{else if $current_step_banner == 4}
-		{l s="Next: let's see shipping methods" mod="onboarding"}
-	{else if $current_step_banner == 5}
-		{l s="I'm all good, let's launch!" mod="onboarding"}
-	{/if}
-{/capture} -->
 {capture name="onboardingStepButton"}
-	{if $current_step_banner == 1}
+	{if $current_step == 0}
 		{l s="Let's start!" mod="onboarding"}
-	{else if $current_step_banner == 2}
-		{l s="I'm done, take me to next step" mod="onboarding"}
-	{else if $current_step_banner == 3}
-		{l s="I'm done, take me to next step" mod="onboarding"}
-	{else if $current_step_banner == 4}
-		{l s="I'm done, take me to next step" mod="onboarding"}
-	{else if $current_step_banner == 5}
+	{else if $current_step == 5}
 		{l s="I'm all good, let's launch!" mod="onboarding"}
+	{else}
+		{l s="I'm done, take me to next step" mod="onboarding"}
 	{/if}
 {/capture}
 {capture name="onboardingStepBannerTitle"}
-	{if $current_step_banner == 1}
+	{if $current_step == 0}
 		{l s="Take a tour: get started with PrestaShop" mod="onboarding"}
-	{else if $current_step_banner == 2}
+	{else if $current_step == 1}
 		{l s="Customize your shop's look and feel" mod="onboarding"}
-	{else if $current_step_banner == 3}
+	{else if current_step == 3}
 		{l s="Add your first products" mod="onboarding"}
-	{else if $current_step_banner == 4}
+	{else if current_step == 4}
 		{l s="Get your shop ready for payments" mod="onboarding"}
-	{else if $current_step_banner == 5}
+	{else if current_step == 5}
 		{l s="You are now ready to launch your shop." mod="onboarding"}
 	{/if}
 {/capture}
@@ -110,16 +93,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2">
-					<div class="onboarding-step step-first {if $last_validate_step == 0} step-todo{else}{if $current_step == 1} step-in-progress active{elseif $current_step > 1} active step-success{/if}{/if}"></div>
+					<div class="onboarding-step step-first {if $current_step == 0}step-todo{elseif $current_step == 1}step-in-progress active{elseif $current_step > 1}active step-success{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step {if $last_validate_step >= 1}{if $current_step == 2} step-in-progress active{elseif $current_step > 2} active step-success{elseif $current_step < 2} step-todo{/if}{else} step-todo{/if}"></div>
+					<div class="onboarding-step {if $current_step <= 1}step-todo{elseif $current_step == 2}step-in-progress active{elseif $current_step > 2}active step-success{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step {if $last_validate_step >= 2}{if $current_step == 3} step-in-progress active{elseif $current_step > 3} active step-success{elseif $current_step < 3} step-todo{/if}{else} step-todo{/if}"></div>
+					<div class="onboarding-step {if $current_step <= 2}step-todo{elseif $current_step == 3}step-in-progress active{elseif $current_step > 3}active step-success{/if}"></div>
 				</div>
 				<div class="col-xs-3 col-md-2">
-					<div class="onboarding-step step-final {if $last_validate_step >= 3}{if $current_step == 4} step-in-progress active{elseif $current_step > 4} active step-success{elseif $current_step < 4} step-todo{/if}{else} step-todo{/if}"></div>
+					<div class="onboarding-step step-final {if $current_step <= 3}step-todo{elseif $current_step == 4}step-in-progress active{elseif $current_step > 4}active step-success{/if}"></div>
 				</div>
 			</div>
 			<div class="row">
@@ -162,9 +145,9 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 
 		<div class="steps-list-container">
 			<ul class="steps-list">
-				<li {if $steps[1] == 1}class="checked"{/if}{if $current_step == 1}class="active"{/if}{if $current_step < 1}class="inactive"{/if}>
+				<li {if $current_step > 1}class="checked"{/if}{if $current_step == 1}class="active"{/if}{if $current_step < 1}class="inactive"{/if}>
 					<span class="title">{l s="Customize your shop's look and feel" mod="onboarding"}</span>
-					{if $steps[1] == 0 && $current_step == 1}
+					{if $current_step == 1}
 						<p class="desc">
 						{l s="Give your shop its own identity based on your brand." mod="onboarding"}<br/>
 						{l s="You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique." mod="onboarding"}<br/><br/>
@@ -172,15 +155,15 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 							<i class="icon icon-pencil icon-lg"></i>
 							{l s="OK, take me to my theme" mod="onboarding"}</a>
 						</p>
-					{else if $steps[1] == 1}
+					{else if $current_step > 1}
 						<p class="desc">
 							<a class="continue_editing" href="{$continue_editing_links.theme}">{l s="Continue editing" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
-				<li {if $steps[2] == 1}class="checked"{/if}{if $current_step == 2}class="active"{/if}{if $current_step < 2}class="inactive"{/if}>
+				<li {if $current_step > 2}class="checked"{/if}{if $current_step == 2}class="active"{/if}{if $current_step < 2}class="inactive"{/if}>
 					<span class="title">{l s='Add products to your catalog'}</span>
-					{if $steps[2] == 0 && $current_step == 2}
+					{if $current_step == 2}
 						<p class="desc">
 							{l s="Start your product catalog with a first product." mod="onboarding"}
 							<br/>
@@ -192,15 +175,15 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 							<i class="icon icon-book icon-lg"></i>
 							{l s="Ok, Go to my catalog" mod="onboarding"}</a>
 						</p>
-					{else if $steps[2] == 1}
+					{else if $current_step > 2}
 						<p class="desc">
 							<a class="" href="{$continue_editing_links.product}">{l s="Continue adding products" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
-				<li {if $steps[3] == 1}class="checked"{/if}{if $current_step == 3}class="active"{/if}{if $current_step < 3}class="inactive"{/if}>
+				<li {if $current_step > 3}class="checked"{/if}{if $current_step == 3}class="active"{/if}{if $current_step < 3}class="inactive"{/if}>
 					<span class="title">{l s='Set up your payment methods'}</span>
-					{if $steps[3] == 0 && $current_step == 3}
+					{if $current_step == 3}
 						<p class="desc">
 							{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
 							<br/><br/>
@@ -209,15 +192,15 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 								{l s="Show me payment methods" mod="onboarding"}
 							</a>
 						</p>
-					{else if $steps[3] == 1}
+					{else if $current_step > 3}
 						<p class="desc">
 							<a class="" href="{$continue_editing_links.payment}">{l s="Continue selecting payment methods" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
-				<li {if $steps[4] == 1}class="checked"{/if}{if $current_step == 4}class="active"{/if}{if $current_step < 4}class="inactive"{/if}>
+				<li {if $current_step > 4}class="checked"{/if}{if $current_step == 4}class="active"{/if}{if $current_step < 4}class="inactive"{/if}>
 					<span class="title" >{l s='Set up your shipping methods'}</span>
-					{if $steps[4] == 0 && $current_step == 4}
+					{if $current_step == 4}
 					<p class="desc">
 						{l s="Unless you are only selling virtual products, you must register your shipping partners into PrestaShop." mod="onboarding"}<br/>
 						{l s="Without this your customers won't be able to enjoy your products!" mod="onboarding"}
@@ -228,7 +211,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 							{l s="Let's see about shipping" mod="onboarding"}
 						</a>
 					</p>
-					{else if $steps[4] == 1}
+					{else if $current_step > 4}
 						<p class="desc">
 							<a class="" href="{$continue_editing_links.carrier}">{l s="Continue selecting shipping methods" mod="onboarding"}</a>
 						</p>
@@ -286,7 +269,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			<h3 class="text-center">
 			{$smarty.capture.onboardingStepModalTitle}
 			</h3>
-			<a class="close-button" href="#" id="final-button">
+			<a class="close-button" href="" id="final-button">
 				<i class="icon icon-times-circle"></i>
 			</a>
 		</div>
