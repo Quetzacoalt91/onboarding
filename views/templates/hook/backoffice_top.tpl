@@ -107,16 +107,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2 text-center">
-					<a style="{if $current_step <= 1} color:gray; text-decoration:none {/if}"{if $current_step > 1} href="{$continue_editing_links.theme}"{/if}>{l s="Customize your shop" mod="onboarding"}</a>
+					<a style="{if $current_step < 1} color:gray; text-decoration:none {/if}"{if $current_step >= 1} href="{$continue_editing_links.theme}"{/if}>{l s="Customize your shop" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 2} color:gray; text-decoration:none {/if}"{if $current_step > 2} href="{$continue_editing_links.product}"{/if}>{l s="Add products" mod="onboarding"}</a>
+					<a style="{if $current_step < 2} color:gray; text-decoration:none {/if}"{if $current_step >= 2} href="{$continue_editing_links.product}"{/if}>{l s="Add products" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 3} color:gray; text-decoration:none {/if}"{if $current_step > 3} href="{$continue_editing_links.payment}"{/if}>{l s="Configure payments" mod="onboarding"}</a>
+					<a style="{if $current_step < 3} color:gray; text-decoration:none {/if}"{if $current_step >= 3} href="{$continue_editing_links.payment}"{/if}>{l s="Configure payments" mod="onboarding"}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step <= 4} color:gray; text-decoration:none {/if}"{if $current_step > 4} href="{$continue_editing_links.carrier}"{/if}>{l s="Choose your shipping options" mod="onboarding"}</a>
+					<a style="{if $current_step < 4} color:gray; text-decoration:none {/if}"{if $current_step >= 4} href="{$continue_editing_links.carrier}"{/if}>{l s="Choose your shipping options" mod="onboarding"}</a>
 				</div>
 			</div>
 			<hr>
