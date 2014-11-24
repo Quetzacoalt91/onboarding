@@ -39,11 +39,13 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		{l s="Take a tour: get started with PrestaShop" mod="onboarding"}
 	{else if $current_step == 1}
 		{l s="Customize your shop's look and feel" mod="onboarding"}
-	{else if current_step == 3}
+	{else if $current_step == 2}
 		{l s="Add your first products" mod="onboarding"}
-	{else if current_step == 4}
+	{else if $current_step == 3}
 		{l s="Get your shop ready for payments" mod="onboarding"}
-	{else if current_step == 5}
+	{else if $current_step == 4}
+		{l s="You are now ready to launch your shop." mod="onboarding"}
+	{else if $current_step == 5}
 		{l s="You are now ready to launch your shop." mod="onboarding"}
 	{/if}
 {/capture}
@@ -93,7 +95,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		<div id="onboarding-starter" class="hide">
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Getting Started with PrestaShop</h3>
+					<h3>{l s='Getting Started with PrestaShop' mod='onboarding'}</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -167,14 +169,14 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					{/if}
 				</li>
 				<li {if $current_step > 2}class="checked"{/if}{if $current_step == 2}class="active"{/if}{if $current_step < 2}class="inactive"{/if}>
-					<span class="title">{l s='Add products to your catalog'}</span>
+					<span class="title">{l s='Add products to your catalog' mod='onboarding'}</span>
 					{if $current_step == 2}
 						<p class="desc">
 							{l s="Start your product catalog with a first product." mod="onboarding"}
 							<br/>
 							{l s="Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image!" mod="onboarding"}
 							{assign "onboardingstep2importcsv" value=$continue_editing_links.import var="onboardingstep2importcsv"}
-							{l s='If you already have your product base in a .CSV file, save time and make an import!' tags=["<a href='$onboardingstep2importcsv&amp;addproduct'>"] mod='onboarding' }
+							{l s='If you already have your product base in a .CSV file, save time and make an import!' tags=["<a href='$onboardingstep2importcsv&amp;addproduct'>"] mod='onboarding'}
 							<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
 							<i class="icon icon-book icon-lg"></i>
@@ -187,10 +189,10 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					{/if}
 				</li>
 				<li {if $current_step > 3}class="checked"{/if}{if $current_step == 3}class="active"{/if}{if $current_step < 3}class="inactive"{/if}>
-					<span class="title">{l s='Set up your payment methods'}</span>
+					<span class="title">{l s='Set up your payment methods' mod='onboarding'}</span>
 					{if $current_step == 3}
 						<p class="desc">
-							{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
+							{l s='Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers).' mod="onboarding"}
 							<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
 								<i class="icon icon-credit-card icon-lg"></i>
@@ -204,11 +206,11 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					{/if}
 				</li>
 				<li {if $current_step > 4}class="checked"{/if}{if $current_step == 4}class="active"{/if}{if $current_step < 4}class="inactive"{/if}>
-					<span class="title" >{l s='Set up your shipping methods'}</span>
+					<span class="title" >{l s='Set up your shipping methods' mod='onboarding'}</span>
 					{if $current_step == 4}
 					<p class="desc">
-						{l s="Unless you are only selling virtual products, you must register your shipping partners into PrestaShop." mod="onboarding"}<br/>
-						{l s="Without this your customers won't be able to enjoy your products!" mod="onboarding"}
+						{l s='Unless you are only selling virtual products, you must register your shipping partners into PrestaShop.' mod='onboarding'}<br/>
+						{l s='Without this your customers won\'t be able to enjoy your products!' mod='onboarding'}
 						<br/>
 						<br/>
 						<a class="btn btn-primary continue_editing" href="#">
