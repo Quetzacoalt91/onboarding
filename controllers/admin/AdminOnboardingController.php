@@ -38,8 +38,11 @@ class AdminOnboardingController extends ModuleAdminController
 			4 => $this->context->link->getAdminLink('AdminCarriers').'&onboarding&onboarding_carrier',
 		);
 
-		if ($current_step)
+		if ($current_step < 6)
 			Configuration::updateValue('PS_ONBOARDING_CURRENT_STEP', $current_step);
+
+		if ($current_step > 6)
+			$this->module->uninstall();
 
 		Tools::redirectAdmin(isset($links[$current_step]) ? $links[$current_step] : Context::getContext()->link->getAdminLink('AdminDashboard')
 			.'&onboarding');

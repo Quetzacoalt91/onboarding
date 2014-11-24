@@ -40,7 +40,7 @@ class OnBoarding extends Module
 
 		parent::__construct();
 
-		if (Configuration::get('PS_ONBOARDING_CURRENT_STEP') > 5)
+		if (Configuration::get('PS_ONBOARDING_CURRENT_STEP') > 6)
 			$this->uninstall();
 	}
 

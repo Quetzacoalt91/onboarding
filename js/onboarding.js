@@ -4,10 +4,11 @@ $( document ).ready(function() {
 		$('.gwd-page-container').addClass('gwd-gen-oxd9');
 		onBoarding.sleep(5400, function() {
 			$('.onboarding .steps').hide('normal', function() {
+				validateStep(7);
 				$('.onboarding .final').show('nomal');
 				$('.quick-start-button').hide();
 			});
-		})
+		});
 	});
 
 	$('.steps a').click(function() {
@@ -28,7 +29,7 @@ $( document ).ready(function() {
 	});
 
 	$('.skip').click(function() {
-		validateStep(5);
+		validateStep(7);
 		$('.overlay, .alert-onboarding').hide();
 	});
 

@@ -18,6 +18,11 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
 	{else if $current_step == 4}
 		{l s="If you feel you need more information, you can still have a look at PrestaShop Documentation: click on \"Help\" in the top right corner of your back-office!" mod="onboarding"}
+	{else if $current_step == 5}
+		{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.'  mod='onboarding'}<br />
+		{l s="To dive deeper in the configuration of your shop, you should read the [1]'First steps with PrestaShop 1.6'[/1] chapter of the PrestaShop User Guide." tags=['<a href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6" class="_blank">'] mod="onboarding"}
+		<br />
+		{l s="Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public." mod="onboarding"}
 	{/if}
 {/capture}
 {capture name="onboardingStepButton"}
@@ -225,17 +230,9 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 						{l s="Launch" mod="onboarding"}
 					</button>
 				</div>
-			{elseif $current_step == 6}
-				<p>{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.'  mod='onboarding'}</p>
-
-				<p>{l s="To dive deeper in the configuration of your shop, you should read the <a>'First steps with PrestaShop 1.6'</a> chapter of the PrestaShop User Guide." mod="onboarding"}</p>
-				href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6
-
-				<p>{l s="Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public." mod="onboarding"}</p>
 			{else}
 				<a href="#" class="skip">{l s="Skip Tutorial" mod="onboarding"}</a>
-			 {/if}
-
+			{/if}
 		</div>
 		<div class="steps-animation-container">
 			{if $current_step == 1}
