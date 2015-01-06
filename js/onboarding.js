@@ -33,7 +33,7 @@ $( document ).ready(function() {
 		$('.overlay, .alert-onboarding').hide();
 	});
 
-	if (display_onboarding_modal)
+	if (typeof display_onboarding_modal !== 'undefined' && display_onboarding_modal)
 		toggleOnboardingModal();
 });
 

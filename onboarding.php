@@ -33,7 +33,7 @@ class OnBoarding extends Module
 		$this->name = 'onboarding';
 		$this->bootstrap = true;
 		$this->tab = 'administration';
-		$this->version = '0.1.0';
+		$this->version = '0.1.1';
 		$this->author = 'PrestaShop';
 		$this->displayName = $this->l('OnBoarding');
 		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.');
@@ -122,6 +122,14 @@ class OnBoarding extends Module
 				'carrier' => $this->context->link->getAdminLink('AdminCarriers'),
 			)
 		));
+
+		if (Tools::strtolower($this->context->controller->controller_name) == 'adminmodules' && ($module_name = Tools::getValue('configure')))
+		{
+			$module = Module::getInstanceByName($module_name);
+
+			if (!$module->bootstrap)
+				return false;
+		}
 
 		return $this->display(__FILE__, 'backoffice_top.tpl');
 	}
