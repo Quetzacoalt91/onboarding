@@ -91,7 +91,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 
 <div class="onboarding minimized">
 	<div class="overlay"></div>
-	<div class="panel steps">
+	<div class="panel onboarding-steps">
 		<div id="onboarding-starter" class="hide">
 			<div class="row">
 				<div class="col-md-12">

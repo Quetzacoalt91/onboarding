@@ -3,7 +3,7 @@ $( document ).ready(function() {
 	$('#onboarding-launch').click(function() {
 		$('.gwd-page-container').addClass('gwd-gen-oxd9');
 		onBoarding.sleep(5400, function() {
-			$('.onboarding .steps').hide('normal', function() {
+			$('.onboarding .onboarding-steps').hide('normal', function() {
 				validateStep(7);
 				$('.onboarding .final').show('nomal');
 				$('.quick-start-button').hide();
@@ -11,8 +11,8 @@ $( document ).ready(function() {
 		});
 	});
 
-	$('.steps a').click(function() {
-		$('.steps').animate({top: '-560px'}, 300);
+	$('.onboarding-steps a').click(function() {
+		$('.onboarding-steps').animate({top: '-560px'}, 300);
 	});
 
 	$('<div class="alert alert-onboarding"></div>').html($('#onboarding-starter')).detach().prependTo('#content');
@@ -48,10 +48,10 @@ var onBoarding = {
 
 function toggleOnboardingModal()
 {
-	if ($('.steps').css('top') === '-560px')
-		$('.steps').animate({top: '-3px'}, 300);
+	if ($('.onboarding-steps').css('top') === '-560px')
+		$('.onboarding-steps').animate({top: '-3px'}, 300);
 	else
-		$('.steps').animate({top: '-560px'}, 300);
+		$('.onboarding-steps').animate({top: '-560px'}, 300);
 
 	$('.onboarding').toggleClass('minimized');
 }
