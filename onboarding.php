@@ -1,5 +1,5 @@
 <?php
-/*
+/**
 * 2007-2014 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -18,11 +18,12 @@
 * versions in the future. If you wish to customize PrestaShop for your
 * needs please refer to http://www.prestashop.com for more information.
 *
-*  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2014 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2014 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
+
 if (!defined('_PS_VERSION_'))
 	exit;
 
@@ -33,10 +34,11 @@ class OnBoarding extends Module
 		$this->name = 'onboarding';
 		$this->bootstrap = true;
 		$this->tab = 'administration';
-		$this->version = '0.1.2';
+		$this->version = '0.1.3';
 		$this->author = 'PrestaShop';
 		$this->displayName = $this->l('OnBoarding');
-		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.');
+		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful
+			interface, it shows the user how to launch his/her shop in several easy steps.');
 
 		parent::__construct();
 
@@ -127,7 +129,7 @@ class OnBoarding extends Module
 		{
 			$module = Module::getInstanceByName($module_name);
 
-			if (!$module->bootstrap)
+			if (!isset($module->bootstrap) || !$module->bootstrap)
 				return false;
 		}
 

@@ -1,3 +1,28 @@
+{*
+* 2007-2015 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2015 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*}
+
 {literal}
 <style type="text/css">
 	.gwd-page-container{position:relative;width:265px;height:385px;overflow: hidden;}
@@ -31,14 +56,14 @@
 <div class="gwd-page-container">
 	<div class="gwd-page-wrapper gwd-page-size gwd-div-toso">
 		<div class="gwd-page-content gwd-page-size gwd-div-l6lw">
-			<img class="gwd-img-tcvi gwd-gen-5gpsgwdanimation gwd-gen-5gpsgwdanimation-gen-animation0keyframe" id="bg" src="{$module_dir}img/animation/bg.jpg">
-			<img class="gwd-img-6ca0 gwd-gen-5i0dgwdanimation gwd-gen-5i0dgwdanimation-gen-animation0keyframe" id="cloud1" src="{$module_dir}img/animation/cloud1.png">
-			<div class="steps-blueprint gwd-img-qq97 gwd-gen-sb5tgwdanimation gwd-gen-sb5tgwdanimation-gen-animation0keyframe" id="{$module_dir}img/animation/rocket">
-				<img class="gwd-img-mo29" id="img102" src="{$module_dir}img/animation/rocket.png">
+			<img class="gwd-img-tcvi gwd-gen-5gpsgwdanimation gwd-gen-5gpsgwdanimation-gen-animation0keyframe" id="bg" src="{$module_dir|escape:'html':'UTF-8'}img/animation/bg.jpg">
+			<img class="gwd-img-6ca0 gwd-gen-5i0dgwdanimation gwd-gen-5i0dgwdanimation-gen-animation0keyframe" id="cloud1" src="{$module_dir|escape:'html':'UTF-8'}img/animation/cloud1.png">
+			<div class="steps-blueprint gwd-img-qq97 gwd-gen-sb5tgwdanimation gwd-gen-sb5tgwdanimation-gen-animation0keyframe" id="{$module_dir|escape:'html':'UTF-8'}img/animation/rocket">
+				<img class="gwd-img-mo29" id="img102" src="{$module_dir|escape:'html':'UTF-8'}img/animation/rocket.png">
 			</div>
-			<img class="gwd-img-svnc gwd-gen-zd0fgwdanimation gwd-gen-zd0fgwdanimation-gen-animation0keyframe" id="cloud3" src="{$module_dir}img/animation/cloud3.png">
-			<img class="gwd-img-tqxl gwd-gen-q4xngwdanimation gwd-gen-q4xngwdanimation-gen-animation0keyframe" id="cloud2" src="{$module_dir}img/animation/cloud2.png">
-			<img class="gwd-img-ax7c gwd-gen-acbkgwdanimation gwd-gen-acbkgwdanimation-gen-animation0keyframe" id="fire" src="{$module_dir}img/animation/fire.png">
+			<img class="gwd-img-svnc gwd-gen-zd0fgwdanimation gwd-gen-zd0fgwdanimation-gen-animation0keyframe" id="cloud3" src="{$module_dir|escape:'html':'UTF-8'}img/animation/cloud3.png">
+			<img class="gwd-img-tqxl gwd-gen-q4xngwdanimation gwd-gen-q4xngwdanimation-gen-animation0keyframe" id="cloud2" src="{$module_dir|escape:'html':'UTF-8'}img/animation/cloud2.png">
+			<img class="gwd-img-ax7c gwd-gen-acbkgwdanimation gwd-gen-acbkgwdanimation-gen-animation0keyframe" id="fire" src="{$module_dir|escape:'html':'UTF-8'}img/animation/fire.png">
 		</div>
 	</div>
 </div>

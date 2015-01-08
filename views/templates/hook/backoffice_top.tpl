@@ -1,7 +1,32 @@
+{*
+* 2007-2015 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2015 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*}
+
 <script>
 var display_onboarding_modal= {$display_onboarding_modal|intval};
 var current_step_onboarding = {$current_step|escape|intval};
-var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
+var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')|escape:'html':'UTF-8'}';
 </script>
 {capture name="onboardingStepParagraph"}
 	{if $current_step == 0}
@@ -129,12 +154,12 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 			<hr>
 			<div class="row">
 				<div class="col-lg-8">
-					<h4>{$smarty.capture.onboardingStepBannerTitle}</h4>
-					<p>{$smarty.capture.onboardingStepParagraph}</p>
+					<h4>{$smarty.capture.onboardingStepBannerTitle|escape:'html':'UTF-8'}</h4>
+					<p>{$smarty.capture.onboardingStepParagraph|escape:'html':'UTF-8'}</p>
 				</div>
 				<div class="col-lg-4 onboarding-action-container">
-					<a href="{$next_step_link}" class="btn btn-default btn-lg quick-start-button pull-right">
-						{$smarty.capture.onboardingStepButton}&nbsp;&nbsp;
+					<a href="{$next_step_link|escape:'html':'UTF-8'}" class="btn btn-default btn-lg quick-start-button pull-right">
+						{$smarty.capture.onboardingStepButton|escape:'html':'UTF-8'}&nbsp;&nbsp;
 						<i class="icon icon-angle-right icon-lg"></i>
 					</a>
 				</div>
@@ -143,7 +168,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 
 		<div class="onboarding-intro">
 			<h3 class="text-center">
-			{$smarty.capture.onboardingStepModalTitle}
+			{$smarty.capture.onboardingStepModalTitle|escape:'html':'UTF-8'}
 			</h3>
 			<a class="close-button" href="#" id="quick-start-button">
 				<i class="icon icon-times-circle"></i>
@@ -164,7 +189,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 						</p>
 					{else if $current_step > 1}
 						<p class="desc">
-							<a class="continue_editing" href="{$continue_editing_links.theme}">{l s="Continue editing" mod="onboarding"}</a>
+							<a class="continue_editing" href="{$continue_editing_links.theme|escape:'html':'UTF-8'}">{l s="Continue editing" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
@@ -184,7 +209,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 						</p>
 					{else if $current_step > 2}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.product}">{l s="Continue adding products" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.product|escape:'html':'UTF-8'}">{l s="Continue adding products" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
@@ -201,7 +226,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 						</p>
 					{else if $current_step > 3}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.payment}">{l s="Continue selecting payment methods" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.payment|escape:'html':'UTF-8'}">{l s="Continue selecting payment methods" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
@@ -220,7 +245,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 					</p>
 					{else if $current_step > 4}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.carrier}">{l s="Continue selecting shipping methods" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.carrier|escape:'html':'UTF-8'}">{l s="Continue selecting shipping methods" mod="onboarding"}</a>
 						</p>
 					{/if}
 				</li>
@@ -238,16 +263,16 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 		</div>
 		<div class="steps-animation-container">
 			{if $current_step == 1}
-				<img src="{$module_dir}img/step0.jpg" alt="Step 1">
+				<img src="{$module_dir|escape:'html':'UTF-8'}img/step0.jpg" alt="Step 1">
 			{/if}
 			{if $current_step == 2}
-				<img src="{$module_dir}img/step1.jpg" alt="Step 2">
+				<img src="{$module_dir|escape:'html':'UTF-8'}img/step1.jpg" alt="Step 2">
 			{/if}
 			{if $current_step == 3}
-				<img src="{$module_dir}img/step2.jpg" alt="Step 3">
+				<img src="{$module_dir|escape:'html':'UTF-8'}img/step2.jpg" alt="Step 3">
 			{/if}
 			{if $current_step == 4}
-				<img src="{$module_dir}img/step3.jpg" alt="Step 4">
+				<img src="{$module_dir|escape:'html':'UTF-8'}img/step3.jpg" alt="Step 4">
 			{/if}
 			{if $current_step == 5}
 				{include file="./launch_animation.tpl"}
@@ -266,7 +291,7 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')}';
 	<div class="panel final" style="display: none;">
 		<div class="onboarding-intro">
 			<h3 class="text-center">
-			{$smarty.capture.onboardingStepModalTitle}
+			{$smarty.capture.onboardingStepModalTitle|escape:'html':'UTF-8'}
 			</h3>
 			<a class="close-button" href="" id="final-button">
 				<i class="icon icon-times-circle"></i>
