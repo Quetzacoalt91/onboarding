@@ -26,7 +26,7 @@
 <script>
 var display_onboarding_modal= {$display_onboarding_modal|intval};
 var current_step_onboarding = {$current_step|escape|intval};
-var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')|escape:'html':'UTF-8'}';
+var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javascript':'UTF-8'}";
 </script>
 {capture name="onboardingStepParagraph"}
 	{if $current_step == 0}
@@ -329,4 +329,3 @@ var onboarding_ajax_url = '{$link->getAdminLink('AdminOnboarding')|escape:'html'
 		</div>
 	</div>
 </div>
-
