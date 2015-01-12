@@ -30,74 +30,67 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 </script>
 {capture name="onboardingStepParagraph"}
 	{if $current_step == 0}
-		{l s='Hey %s, welcome on your own online shop' sprintf=[$employee->firstname] mod='onboarding'}<br/>
-		{l s="Follow the guide and take the first steps with your online shop!" mod="onboarding"}
+		{l s='Hey %s, welcome on your own online shop.[1]Follow the guide and take the first steps with your online shop!' sprintf=[$employee->firstname] tags=['<br />'] mod='onboarding'}
 	{else if $current_step == 1}
-		{l s="Check out our catalog to get a new theme or customize the current default theme." mod="onboarding"}<br/>
-		{l s="Add your logo, play on fonts and colors... Give this special look to your shop!" mod="onboarding"}
+		{l s='Check out our catalog to get a new theme or customize the current default theme.[1]Add your logo, play on fonts and colors... Give this special look to your shop!' tags=['<br />'] mod='onboarding'}
 	{else if $current_step == 2}
-		{l s="Start your product catalog with a first product." mod="onboarding"}<br/>
-		{l s="Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image!" mod="onboarding"}<br/>
-		{l s="If you already have your product base in a .CSV file, save time and make an import!" mod="onboarding"}
+		{l s='Start your product catalog with a first product.[1]Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image![1]If you already have your product base in a .CSV file, save time and make an import!' tags=['<br />'] mod='onboarding'}
 	{else if $current_step == 3}
-		{l s="Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers)." mod="onboarding"}
+		{l s='Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers).' mod='onboarding'}
 	{else if $current_step == 4}
-		{l s="If you feel you need more information, you can still have a look at PrestaShop Documentation: click on \"Help\" in the top right corner of your back-office!" mod="onboarding"}
+		{l s='If you feel you need more information, you can still have a look at PrestaShop Documentation: click on "Help" in the top right corner of your back-office!' mod='onboarding'}
 	{else if $current_step == 5}
-		{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.'  mod='onboarding'}<br />
-		{l s="To dive deeper in the configuration of your shop, you should read the [1]'First steps with PrestaShop 1.6'[/1] chapter of the PrestaShop User Guide." tags=['<a href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6" class="_blank">'] mod="onboarding"}
-		<br />
-		{l s="Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public." mod="onboarding"}
+		{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.[1]To dive deeper in the configuration of your shop, you should read the [2]"First steps with PrestaShop 1.6"[/2] chapter of the PrestaShop User Guide.[1]Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public.'  tags=['<br />', '<a href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6" class="_blank">'] mod='onboarding'}
 	{/if}
 {/capture}
 {capture name="onboardingStepButton"}
 	{if $current_step == 0}
-		{l s="Let's start!" mod="onboarding"}
+		{l s='Let\'s start!' mod='onboarding'}
 	{else if $current_step == 5}
-		{l s="I'm all good, let's launch!" mod="onboarding"}
+		{l s='I\'m all good, let\'s launch!' mod='onboarding'}
 	{else}
-		{l s="I'm done, take me to next step" mod="onboarding"}
+		{l s='I\'m done, take me to next step' mod='onboarding'}
 	{/if}
 {/capture}
 {capture name="onboardingStepBannerTitle"}
 	{if $current_step == 0}
-		{l s="Take a tour: get started with PrestaShop" mod="onboarding"}
+		{l s='Take a tour: get started with PrestaShop' mod='onboarding'}
 	{else if $current_step == 1}
-		{l s="Customize your shop's look and feel" mod="onboarding"}
+		{l s='Customize your shop\'s look and feel' mod='onboarding'}
 	{else if $current_step == 2}
-		{l s="Add your first products" mod="onboarding"}
+		{l s='Add your first products' mod='onboarding'}
 	{else if $current_step == 3}
-		{l s="Get your shop ready for payments" mod="onboarding"}
+		{l s='Get your shop ready for payments' mod='onboarding'}
 	{else if $current_step == 4}
-		{l s="You are now ready to launch your shop." mod="onboarding"}
+		{l s='You are now ready to launch your shop.' mod='onboarding'}
 	{else if $current_step == 5}
-		{l s="You are now ready to launch your shop." mod="onboarding"}
+		{l s='You are now ready to launch your shop.' mod='onboarding'}
 	{/if}
 {/capture}
 
 {capture name="onboardingStepModalTitle"}
 	{if $current_step == 1}
-		{l s="A few steps before launching!" mod="onboarding"}
+		{l s='A few steps before launching!' mod='onboarding'}
 	{else if $current_step == 2}
-		{l s="Let's create your first products" mod="onboarding"}
+		{l s='Let\'s create your first products' mod='onboarding'}
 	{else if $current_step == 3}
-		{l s="Get your shop ready for payments" mod="onboarding"}
+		{l s='Get your shop ready for payments' mod='onboarding'}
 	{else if $current_step == 4}
-		{l s="Choose your shipping options" mod="onboarding"}
+		{l s='Choose your shipping options' mod='onboarding'}
 	{else if $current_step == 5}
-		{l s="Hurrah!" mod="onboarding"}
+		{l s='Hurrah!' mod='onboarding'}
 	{/if}
 {/capture}
 {capture name="onboardingComplete"}
 	{if $current_step == 1}
 	{else if $current_step == 2}
-		{l s="1/4 complete" mod="onboarding"}
+		{l s='1/4 complete' mod='onboarding'}
 	{else if $current_step == 3}
-		{l s="2/4 complete" mod="onboarding"}
+		{l s='2/4 complete' mod='onboarding'}
 	{else if $current_step == 4}
-		{l s="3/4 complete" mod="onboarding"}
+		{l s='3/4 complete' mod='onboarding'}
 	{else if $current_step == 5}
-		{l s="4/4 complete" mod="onboarding"}
+		{l s='4/4 complete' mod='onboarding'}
 	{/if}
 {/capture}
 {capture name="onboardingCompletePercentage"}
@@ -139,23 +132,23 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-md-2 col-md-offset-2 text-center">
-					<a style="{if $current_step < 1} color:gray; text-decoration:none {/if}"{if $current_step >= 1} href="{$continue_editing_links.theme}"{/if}>{l s="Customize your shop" mod="onboarding"}</a>
+					<a style="{if $current_step < 1} color:gray; text-decoration:none {/if}"{if $current_step >= 1} href="{$continue_editing_links.theme}"{/if}>{l s='Customize your shop' mod='onboarding'}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step < 2} color:gray; text-decoration:none {/if}"{if $current_step >= 2} href="{$continue_editing_links.product}"{/if}>{l s="Add products" mod="onboarding"}</a>
+					<a style="{if $current_step < 2} color:gray; text-decoration:none {/if}"{if $current_step >= 2} href="{$continue_editing_links.product}"{/if}>{l s='Add products' mod='onboarding'}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step < 3} color:gray; text-decoration:none {/if}"{if $current_step >= 3} href="{$continue_editing_links.payment}"{/if}>{l s="Configure payments" mod="onboarding"}</a>
+					<a style="{if $current_step < 3} color:gray; text-decoration:none {/if}"{if $current_step >= 3} href="{$continue_editing_links.payment}"{/if}>{l s='Configure payments' mod='onboarding'}</a>
 				</div>
 				<div class="col-xs-3 col-md-2 text-center">
-					<a style="{if $current_step < 4} color:gray; text-decoration:none {/if}"{if $current_step >= 4} href="{$continue_editing_links.carrier}"{/if}>{l s="Choose your shipping options" mod="onboarding"}</a>
+					<a style="{if $current_step < 4} color:gray; text-decoration:none {/if}"{if $current_step >= 4} href="{$continue_editing_links.carrier}"{/if}>{l s='Choose your shipping options' mod='onboarding'}</a>
 				</div>
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-lg-8">
 					<h4>{$smarty.capture.onboardingStepBannerTitle|escape:'html':'UTF-8'}</h4>
-					<p>{$smarty.capture.onboardingStepParagraph|escape:'html':'UTF-8'}</p>
+					<p>{$smarty.capture.onboardingStepParagraph|escape:'UTF-8'}</p>
 				</div>
 				<div class="col-lg-4 onboarding-action-container">
 					<a href="{$next_step_link|escape:'html':'UTF-8'}" class="btn btn-default btn-lg quick-start-button pull-right">
@@ -178,18 +171,18 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 		<div class="steps-list-container">
 			<ul class="steps-list">
 				<li {if $current_step > 1}class="checked"{/if}{if $current_step == 1}class="active"{/if}{if $current_step < 1}class="inactive"{/if}>
-					<span class="title">{l s="Customize your shop's look and feel" mod="onboarding"}</span>
+					<span class="title">{l s='Customize your shop\'s look and feel' mod='onboarding'}</span>
 					{if $current_step == 1}
 						<p class="desc">
-						{l s="Give your shop its own identity based on your brand." mod="onboarding"}<br/>
-						{l s="You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique." mod="onboarding"}<br/><br/>
+						{l s='Give your shop its own identity based on your brand.' mod='onboarding'}<br/>
+						{l s='You can change your theme or install a new one, and make sure to upload your own logo to make your shop truly unique.' mod='onboarding'}<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
 							<i class="icon icon-pencil icon-lg"></i>
-							{l s="OK, take me to my theme" mod="onboarding"}</a>
+							{l s='OK, take me to my theme' mod='onboarding'}</a>
 						</p>
 					{else if $current_step > 1}
 						<p class="desc">
-							<a class="continue_editing" href="{$continue_editing_links.theme|escape:'html':'UTF-8'}">{l s="Continue editing" mod="onboarding"}</a>
+							<a class="continue_editing" href="{$continue_editing_links.theme|escape:'html':'UTF-8'}">{l s='Continue editing' mod='onboarding'}</a>
 						</p>
 					{/if}
 				</li>
@@ -197,19 +190,19 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 					<span class="title">{l s='Add products to your catalog' mod='onboarding'}</span>
 					{if $current_step == 2}
 						<p class="desc">
-							{l s="Start your product catalog with a first product." mod="onboarding"}
+							{l s='Start your product catalog with a first product.' mod='onboarding'}
 							<br/>
-							{l s="Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image!" mod="onboarding"}
+							{l s='Make sure you cover the basics by setting its price, having a nice description and uploading a catchy image!' mod='onboarding'}
 							{assign "onboardingstep2importcsv" value=$continue_editing_links.import var="onboardingstep2importcsv"}
 							{l s='If you already have your product base in a .CSV file, save time and make an import!' tags=["<a href='$onboardingstep2importcsv&amp;addproduct'>"] mod='onboarding'}
 							<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
 							<i class="icon icon-book icon-lg"></i>
-							{l s="Ok, Go to my catalog" mod="onboarding"}</a>
+							{l s='Ok, Go to my catalog' mod='onboarding'}</a>
 						</p>
 					{else if $current_step > 2}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.product|escape:'html':'UTF-8'}">{l s="Continue adding products" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.product|escape:'html':'UTF-8'}">{l s='Continue adding products' mod='onboarding'}</a>
 						</p>
 					{/if}
 				</li>
@@ -217,16 +210,16 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 					<span class="title">{l s='Set up your payment methods' mod='onboarding'}</span>
 					{if $current_step == 3}
 						<p class="desc">
-							{l s='Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers).' mod="onboarding"}
+							{l s='Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers).' mod='onboarding'}
 							<br/><br/>
 							<a class="btn btn-primary continue_editing" href="#">
 								<i class="icon icon-credit-card icon-lg"></i>
-								{l s="Show me payment methods" mod="onboarding"}
+								{l s='Show me payment methods' mod='onboarding'}
 							</a>
 						</p>
 					{else if $current_step > 3}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.payment|escape:'html':'UTF-8'}">{l s="Continue selecting payment methods" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.payment|escape:'html':'UTF-8'}">{l s='Continue selecting payment methods' mod='onboarding'}</a>
 						</p>
 					{/if}
 				</li>
@@ -240,12 +233,12 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 						<br/>
 						<a class="btn btn-primary continue_editing" href="#">
 							<i class="icon icon-truck icon-lg"></i>
-							{l s="Let's see about shipping" mod="onboarding"}
+							{l s='Let\'s see about shipping' mod='onboarding'}
 						</a>
 					</p>
 					{else if $current_step > 4}
 						<p class="desc">
-							<a class="" href="{$continue_editing_links.carrier|escape:'html':'UTF-8'}">{l s="Continue selecting shipping methods" mod="onboarding"}</a>
+							<a class="" href="{$continue_editing_links.carrier|escape:'html':'UTF-8'}">{l s='Continue selecting shipping methods' mod='onboarding'}</a>
 						</p>
 					{/if}
 				</li>
@@ -254,11 +247,11 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 				<div class="step-launch">
 					<button id="onboarding-launch" class="btn btn-block btn-lg btn-primary">
 						<i class="icon icon-check icon-lg"></i>
-						{l s="Launch" mod="onboarding"}
+						{l s='Launch' mod='onboarding'}
 					</button>
 				</div>
 			{else}
-				<a href="#" class="skip">{l s="Skip Tutorial" mod="onboarding"}</a>
+				<a href="#" class="skip">{l s='Skip Tutorial' mod='onboarding'}</a>
 			{/if}
 		</div>
 		<div class="steps-animation-container">
@@ -279,9 +272,9 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 			{/if}
 			<div class="step-before-launch text-center">
 				{if $current_step == 4}
-					{l s="Last step before launch!" mod="onboarding"}
+					{l s='Last step before launch!' mod='onboarding'}
 				{else if $current_step == 5}
-					{l s="You are all set!" mod="onboarding"}
+					{l s='You are all set!' mod='onboarding'}
 				{else}
 					{l s='You are only %s steps away from launch!' sprintf=[5-(int)$current_step] mod='onboarding'}
 				{/if}
@@ -304,7 +297,7 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 				{l s='click on "Help" in the top right corner of your back-office!' mod='onboarding'}
 			</span>
 			<br />
-			<textarea name="social-text" id="social-text">{l s="I just launched my online shop with @PrestaShop. Check it out!" mod="onboarding"}</textarea>
+			<textarea name="social-text" id="social-text">{l s='I just launched my online shop with @PrestaShop. Check it out!' mod='onboarding'}</textarea>
 			<br />
 			<div class="col-lg-3 text-center">
 				<a href="#" class="btn btn-default" onclick="share_facebook_click();">
