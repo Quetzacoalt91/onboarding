@@ -125,6 +125,9 @@ class OnBoarding extends Module
 			)
 		));
 
+		if (Tools::strtolower($this->context->controller->controller_name) == 'admin')
+			return false;
+
 		if (Tools::strtolower($this->context->controller->controller_name) == 'adminmodules' && ($module_name = Tools::getValue('configure')))
 		{
 			$module = Module::getInstanceByName($module_name);
