@@ -55,7 +55,7 @@ class OnBoarding extends Module
 		Configuration::updateValue('PS_ONBOARDING_STEP_3_COMPLETED', 0);
 		Configuration::updateValue('PS_ONBOARDING_STEP_4_COMPLETED', 0);
 
-		if (parent::install() && $this->registerHook('displayBackOfficeHeader')
+		if (parent::install() && $this->registerHook('actionAdminControllerSetMedia')
 			&& $this->registerHook('displayBackOfficeTop') && $this->installTab())
 			return true;
 
@@ -98,13 +98,16 @@ class OnBoarding extends Module
 			return false;
 	}
 
-	public function hookDisplayBackOfficeHeader()
+	public function hookActionAdminControllerSetMedia()
 	{
 		if (!$this->active)
 			return;
 
-		$this->context->controller->addCSS($this->_path.'css/onboarding.css');
+		if (method_exists($this->context->controller, 'addJquery'))
+			$this->context->controller->addJquery();
+
 		$this->context->controller->addJS($this->_path.'js/onboarding.js');
+		$this->context->controller->addCSS($this->_path.'css/onboarding.css');
 	}
 
 	public function hookDisplayBackOfficeTop()
