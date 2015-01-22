@@ -27,7 +27,7 @@
 if (!defined('_PS_VERSION_'))
 	exit;
 
-function upgrade_module_1_1_7($object)
+function upgrade_module_0_1_8($object)
 {
 	return ($object->registerHook('actionAdminControllerSetMedia') && $object->unregisterHook('displayBackOfficeHeader'));
 }
