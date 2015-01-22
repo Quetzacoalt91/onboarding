@@ -34,7 +34,7 @@ class OnBoarding extends Module
 		$this->name = 'onboarding';
 		$this->bootstrap = true;
 		$this->tab = 'administration';
-		$this->version = '0.1.6';
+		$this->version = '0.1.7';
 		$this->author = 'PrestaShop';
 		$this->displayName = $this->l('OnBoarding');
 		$this->description = $this->l('The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful
