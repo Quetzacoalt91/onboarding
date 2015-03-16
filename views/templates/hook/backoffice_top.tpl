@@ -38,7 +38,7 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 	{else if $current_step == 3}
 		{l s='Select which payment methods you want to offer to customers on your shop, and manage the various restrictions you can apply (per currency, country or group of customers).' mod='onboarding'}
 	{else if $current_step == 4}
-		{l s='If you feel you need more information, you can still have a look at PrestaShop Documentation: click on "Help" in the top right corner of your back-office!' mod='onboarding'}
+		{l s='If you feel you need more information, you can still have a look at PrestaShop Documentation: click on "Help" in the top right corner of your back office!' mod='onboarding'}
 	{else if $current_step == 5}
 		{l s='You have completed all the essential first steps to configure your online shop. You can repeat those steps if you have more products, payment methods or shipping partners to add.[1]To dive deeper in the configuration of your shop, you should read the [2]"First steps with PrestaShop 1.6"[/2] chapter of the PrestaShop User Guide.[1]Once you are certain that your shop is ready to sell your products, click on the Launch button to make your shop public.'  tags=['<br />', '<a href="http://doc.prestashop.com/display/PS16/First+steps+with+PrestaShop+1.6" class="_blank">'] mod='onboarding'}
 	{/if}
@@ -294,7 +294,7 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 			<span class="title">
 				{l s='You are now ready to launch your shop. If you feel you need more information, you can still have a look at PrestaShop Documentation:' mod='onboarding'}
 				<br />
-				{l s='click on "Help" in the top right corner of your back-office!' mod='onboarding'}
+				{l s='click on "Help" in the top right corner of your back office!' mod='onboarding'}
 			</span>
 			<br />
 			<textarea name="social-text" id="social-text">{l s='I just launched my online shop with @PrestaShop. Check it out!' mod='onboarding'}</textarea>
