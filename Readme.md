@@ -2,7 +2,7 @@
 
 ## About
 
-The OnBoarding module greets first-time users to their PrestaShop back-office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.
+The OnBoarding module greets first-time users to their PrestaShop back office: through a small playful interface, it shows the user how to launch his/her shop in several easy steps.
 
 ## Contributing
 
