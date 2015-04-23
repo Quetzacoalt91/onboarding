@@ -28,6 +28,9 @@ class AdminOnboardingController extends ModuleAdminController
 {
 	public function postProcess()
 	{
+		if ((int)Tools::getValue('remove') == 1)
+			$this->module->uninstall();
+
 		$current_step = (int)Tools::getValue('current_step');
 
 		$links = array(

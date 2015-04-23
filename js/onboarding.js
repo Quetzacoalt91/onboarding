@@ -52,6 +52,11 @@ $( document ).ready(function() {
 		$('.final').animate({top: '-560px'}, 300);
 		$('.overlay').hide();
 	});
+	
+	$('#onboarding-close').click(function() {
+		$('.alert-onboarding').remove();
+		$.ajax(onboarding_ajax_url+"&remove=1");
+	});
 
 	$('.skip').click(function() {
 		validateStep(7);

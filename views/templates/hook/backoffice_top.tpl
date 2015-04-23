@@ -155,6 +155,12 @@ var onboarding_ajax_url = "{$link->getAdminLink('AdminOnboarding')|escape:'javas
 						{$smarty.capture.onboardingStepButton|escape:'html':'UTF-8'}&nbsp;&nbsp;
 						<i class="icon icon-angle-right icon-lg"></i>
 					</a>
+					{if $removable == true }
+					<a class="btn btn-default btn-lg pull-right" href="#" id="onboarding-close">
+						{l s='No thanks!' mod='onboarding'}&nbsp;&nbsp;
+						<i class="icon icon-times icon-lg"></i>
+					</a>
+					{/if}
 				</div>
 			</div>
 		</div>
